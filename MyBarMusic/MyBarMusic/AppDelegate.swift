@@ -19,9 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        self.window?.rootViewController = MBMainViewController()
+        let bundleVersionKey = "CFBundleVersion"
+        let currentVersion = Bundle.main.infoDictionary?[bundleVersionKey] as? String
+        let lastVersion = UserDefaults.standard.value(forKeyPath: bundleVersionKey) as? String
+        
+        if currentVersion == lastVersion && lastVersion != nil {
+            self.window?.rootViewController = MBMainViewController()
+        } else {
+            self.window?.rootViewController = MBNewFeatureViewController()
+            
+            UserDefaults.standard.setValue(currentVersion, forKeyPath: bundleVersionKey)
+            UserDefaults.standard.synchronize()
+        }
         
         self.window?.makeKeyAndVisible()
+        
         return true
     }
 
