@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let lastVersion = UserDefaults.standard.value(forKeyPath: bundleVersionKey) as? String
         
         if currentVersion == lastVersion && lastVersion != nil {
-            self.window?.rootViewController = MBMainViewController()
+            self.window?.rootViewController = UINavigationController(rootViewController: MBMainViewController())
         } else {
             self.window?.rootViewController = MBNewFeatureViewController()
             

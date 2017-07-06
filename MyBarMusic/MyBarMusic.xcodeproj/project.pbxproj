@@ -11,6 +11,8 @@
 		8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE8BD731F0C94510035EE87 /* Assets.xcassets */; };
 		8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD891F0C98520035EE87 /* MBMainViewController.swift */; };
 		8DE8BD8D1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD8C1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift */; };
+		8DE8BD8F1F0CD3060035EE87 /* MBNavigationItemTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD8E1F0CD3060035EE87 /* MBNavigationItemTitleView.swift */; };
+		8DE8BD911F0CD3420035EE87 /* MBNavigationItemTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE8BD901F0CD3420035EE87 /* MBNavigationItemTitleView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		8DE8BD781F0C94510035EE87 /* MyBarMusic-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MyBarMusic-Info.plist"; sourceTree = "<group>"; };
 		8DE8BD891F0C98520035EE87 /* MBMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMainViewController.swift; sourceTree = "<group>"; };
 		8DE8BD8C1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNewFeatureViewController.swift; sourceTree = "<group>"; };
+		8DE8BD8E1F0CD3060035EE87 /* MBNavigationItemTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNavigationItemTitleView.swift; sourceTree = "<group>"; };
+		8DE8BD901F0CD3420035EE87 /* MBNavigationItemTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBNavigationItemTitleView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,8 @@
 		8DE8BD831F0C97FA0035EE87 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8DE8BD8E1F0CD3060035EE87 /* MBNavigationItemTitleView.swift */,
+				8DE8BD901F0CD3420035EE87 /* MBNavigationItemTitleView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */,
+				8DE8BD911F0CD3420035EE87 /* MBNavigationItemTitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */,
+				8DE8BD8F1F0CD3060035EE87 /* MBNavigationItemTitleView.swift in Sources */,
 				8DE8BD8D1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift in Sources */,
 				8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */,
 			);
@@ -322,6 +330,7 @@
 				DEVELOPMENT_TEAM = VQ2W6JQN9Q;
 				INFOPLIST_FILE = "MyBarMusic/MyBarMusic-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mybar.MyBarMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -336,6 +345,7 @@
 				DEVELOPMENT_TEAM = VQ2W6JQN9Q;
 				INFOPLIST_FILE = "MyBarMusic/MyBarMusic-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mybar.MyBarMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -361,6 +371,7 @@
 				8DE8BD7D1F0C94510035EE87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

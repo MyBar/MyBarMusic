@@ -65,7 +65,7 @@ class MBNewFeatureViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func tapAction() {
-        self.view.window?.rootViewController = MBMainViewController()
+        self.view.window?.rootViewController = UINavigationController(rootViewController: MBMainViewController())
     }
     
     //UIScrollViewDelegate的方法
