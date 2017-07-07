@@ -10,13 +10,25 @@ import UIKit
 
 class MBMainViewController: UIViewController {
     
-    var titleView: MBNavigationItemTitleView?
+    var miniPlayerView: MBMiniPlayerView?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "vc_bg")!)
+        
         self.setupNavigation()
+        
+        self.setupMiniPlayerView()
+    }
+    
+    func setupMiniPlayerView() {
+        self.miniPlayerView = MBMiniPlayerView.shared
+        
+        self.miniPlayerView?.isEnable = false
+        
+        self.view.addSubview(self.miniPlayerView!)
     }
 
     func setupNavigation() {
@@ -36,25 +48,25 @@ class MBMainViewController: UIViewController {
         rightBarButton.addTarget(self, action: #selector(MBMainViewController.clickNavigationBarButtonItemAction(_:)), for: UIControlEvents.touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
         
-        self.titleView = MBNavigationItemTitleView.shared
-        self.titleView?.backgroundColor = UIColor(patternImage: (self.navigationController?.navigationBar.backgroundImage(for: UIBarMetrics.default))!)
-        self.titleView?.myMusicLabel.text = "我的"
-        self.titleView?.channelLabel.text = "音乐馆"
-        self.titleView?.discoverLabel.text = "发现"
+        let titleView = MBNavigationItemTitleView.shared
+        titleView.backgroundColor = UIColor(patternImage: (self.navigationController?.navigationBar.backgroundImage(for: UIBarMetrics.default))!)
+        titleView.myMusicLabel.text = "我的"
+        titleView.channelLabel.text = "音乐馆"
+        titleView.discoverLabel.text = "发现"
         
-        let tapMyMusicLabelGestureRecognizer = UITapGestureRecognizer(target: self.titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
-        let tapChannelLabelGestureRecognizer = UITapGestureRecognizer(target: self.titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
-        let tapDiscoverLabelGestureRecognizer = UITapGestureRecognizer(target: self.titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
+        let tapMyMusicLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
+        let tapChannelLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
+        let tapDiscoverLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
         
-        self.titleView?.myMusicLabel.isUserInteractionEnabled = true
-        self.titleView?.channelLabel.isUserInteractionEnabled = true
-        self.titleView?.discoverLabel.isUserInteractionEnabled = true
+        titleView.myMusicLabel.isUserInteractionEnabled = true
+        titleView.channelLabel.isUserInteractionEnabled = true
+        titleView.discoverLabel.isUserInteractionEnabled = true
         
-        self.titleView?.myMusicLabel.addGestureRecognizer(tapMyMusicLabelGestureRecognizer)
-        self.titleView?.channelLabel.addGestureRecognizer(tapChannelLabelGestureRecognizer)
-        self.titleView?.discoverLabel.addGestureRecognizer(tapDiscoverLabelGestureRecognizer)
+        titleView.myMusicLabel.addGestureRecognizer(tapMyMusicLabelGestureRecognizer)
+        titleView.channelLabel.addGestureRecognizer(tapChannelLabelGestureRecognizer)
+        titleView.discoverLabel.addGestureRecognizer(tapDiscoverLabelGestureRecognizer)
         
-        self.navigationItem.titleView = self.titleView
+        self.navigationItem.titleView = titleView
         
     }
 
@@ -63,8 +75,12 @@ class MBMainViewController: UIViewController {
         if sender == self.navigationItem.leftBarButtonItem?.customView {
             print("leftBarButtonItem")
             
+            self.miniPlayerView?.isEnable = true
+            
         } else if sender == self.navigationItem.rightBarButtonItem?.customView {
             print("rightBarButtonItem")
+            
+            self.miniPlayerView?.isEnable = false
         }
     }
 }

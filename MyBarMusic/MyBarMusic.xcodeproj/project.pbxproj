@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8DA7F4901F0E2B8100DBEE8C /* MBMiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7F48F1F0E2B8100DBEE8C /* MBMiniPlayerView.swift */; };
+		8DA7F4921F0E2B9600DBEE8C /* MBMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7F4911F0E2B9600DBEE8C /* MBMiniPlayerView.xib */; };
+		8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */; };
+		8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */; };
 		8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD6C1F0C94510035EE87 /* AppDelegate.swift */; };
 		8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE8BD731F0C94510035EE87 /* Assets.xcassets */; };
 		8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD891F0C98520035EE87 /* MBMainViewController.swift */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8DA7F48F1F0E2B8100DBEE8C /* MBMiniPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMiniPlayerView.swift; sourceTree = "<group>"; };
+		8DA7F4911F0E2B9600DBEE8C /* MBMiniPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMiniPlayerView.xib; sourceTree = "<group>"; };
+		8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMiniPlayerAlbumCoverView.swift; sourceTree = "<group>"; };
+		8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMiniPlayerAlbumCoverView.xib; sourceTree = "<group>"; };
 		8DE8BD691F0C94510035EE87 /* MyBarMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBarMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE8BD6C1F0C94510035EE87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DE8BD731F0C94510035EE87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +109,10 @@
 			children = (
 				8DE8BD8E1F0CD3060035EE87 /* MBNavigationItemTitleView.swift */,
 				8DE8BD901F0CD3420035EE87 /* MBNavigationItemTitleView.xib */,
+				8DA7F48F1F0E2B8100DBEE8C /* MBMiniPlayerView.swift */,
+				8DA7F4911F0E2B9600DBEE8C /* MBMiniPlayerView.xib */,
+				8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */,
+				8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +221,8 @@
 			files = (
 				8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */,
 				8DE8BD911F0CD3420035EE87 /* MBNavigationItemTitleView.xib in Resources */,
+				8DA7F4921F0E2B9600DBEE8C /* MBMiniPlayerView.xib in Resources */,
+				8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +233,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */,
 				8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */,
+				8DA7F4901F0E2B8100DBEE8C /* MBMiniPlayerView.swift in Sources */,
 				8DE8BD8F1F0CD3060035EE87 /* MBNavigationItemTitleView.swift in Sources */,
 				8DE8BD8D1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift in Sources */,
 				8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */,

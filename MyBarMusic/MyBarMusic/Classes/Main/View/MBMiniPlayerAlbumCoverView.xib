@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Gv9-0n-I2p" customClass="MBMiniPlayerAlbumCoverView" customModule="MyBarMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="424" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player_albumcover_minidefault" translatesAutoresizingMaskIntoConstraints="NO" id="Sr0-G2-Whb" userLabel="Album Image View">
+                    <rect key="frame" x="8" y="5.5" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="FN3-Di-by4"/>
+                        <constraint firstAttribute="height" constant="45" id="yba-0w-5cD"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEK-Rq-LZM" userLabel="Music Name Label">
+                    <rect key="frame" x="61" y="8" width="363" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zhk-PL-TAj" userLabel="Lyric Label">
+                    <rect key="frame" x="61" y="31" width="363" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Zhk-PL-TAj" secondAttribute="bottom" constant="8" id="FE6-NY-rYa"/>
+                <constraint firstItem="dEK-Rq-LZM" firstAttribute="top" secondItem="Gv9-0n-I2p" secondAttribute="top" constant="8" id="I3v-sb-ltS"/>
+                <constraint firstItem="Sr0-G2-Whb" firstAttribute="top" secondItem="Gv9-0n-I2p" secondAttribute="top" constant="5.5" id="IR3-qf-0fR"/>
+                <constraint firstItem="Zhk-PL-TAj" firstAttribute="leading" secondItem="Sr0-G2-Whb" secondAttribute="trailing" constant="8" id="JYr-kU-cvB"/>
+                <constraint firstAttribute="trailing" secondItem="Zhk-PL-TAj" secondAttribute="trailing" id="Jb7-Aq-iBp"/>
+                <constraint firstItem="Zhk-PL-TAj" firstAttribute="top" secondItem="dEK-Rq-LZM" secondAttribute="bottom" constant="2" id="Rhp-ag-Ob0"/>
+                <constraint firstItem="dEK-Rq-LZM" firstAttribute="leading" secondItem="Sr0-G2-Whb" secondAttribute="trailing" constant="8" id="UjG-fu-dr7"/>
+                <constraint firstAttribute="bottom" secondItem="Sr0-G2-Whb" secondAttribute="bottom" constant="5.5" id="eBQ-OM-Gdt"/>
+                <constraint firstAttribute="trailing" secondItem="dEK-Rq-LZM" secondAttribute="trailing" id="j2F-pT-h9b"/>
+                <constraint firstItem="Sr0-G2-Whb" firstAttribute="leading" secondItem="Gv9-0n-I2p" secondAttribute="leading" constant="8" id="sy9-qX-Df4"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="albumImageView" destination="Sr0-G2-Whb" id="Eeq-4a-Enu"/>
+                <outlet property="lyricLabel" destination="Zhk-PL-TAj" id="bY4-vq-pfS"/>
+                <outlet property="musicNameLabel" destination="dEK-Rq-LZM" id="yfF-vf-T8z"/>
+            </connections>
+            <point key="canvasLocation" x="52" y="205"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="player_albumcover_minidefault" width="45" height="45"/>
+    </resources>
+</document>
