@@ -45,6 +45,99 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8DA6189D1F0F730B005C6BC4 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				8DA6189E1F0F730B005C6BC4 /* Controller */,
+				8DA6189F1F0F730B005C6BC4 /* Model */,
+				8DA618A01F0F730B005C6BC4 /* View */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		8DA6189E1F0F730B005C6BC4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8DA6189F1F0F730B005C6BC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DA618A01F0F730B005C6BC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8DA618A11F0F730B005C6BC4 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				8DA618A21F0F730B005C6BC4 /* Controller */,
+				8DA618A31F0F730B005C6BC4 /* Model */,
+				8DA618A41F0F730B005C6BC4 /* View */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		8DA618A21F0F730B005C6BC4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8DA618A31F0F730B005C6BC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DA618A41F0F730B005C6BC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8DA618A51F0F730B005C6BC4 /* MyMusic */ = {
+			isa = PBXGroup;
+			children = (
+				8DA618A61F0F730B005C6BC4 /* Controller */,
+				8DA618A71F0F730B005C6BC4 /* Model */,
+				8DA618A81F0F730B005C6BC4 /* View */,
+			);
+			path = MyMusic;
+			sourceTree = "<group>";
+		};
+		8DA618A61F0F730B005C6BC4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8DA618A71F0F730B005C6BC4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DA618A81F0F730B005C6BC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8DE8BD601F0C94510035EE87 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +168,9 @@
 			children = (
 				8DE8BD7F1F0C97FA0035EE87 /* Main */,
 				8DE8BD841F0C97FA0035EE87 /* NewFeature */,
+				8DA618A51F0F730B005C6BC4 /* MyMusic */,
+				8DA6189D1F0F730B005C6BC4 /* Channel */,
+				8DA618A11F0F730B005C6BC4 /* Discover */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

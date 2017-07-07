@@ -8,11 +8,12 @@
 
 import UIKit
 
-class MBMainViewController: UIViewController {
+class MBMainViewController: UIViewController, UIScrollViewDelegate {
     
     var miniPlayerView: MBMiniPlayerView?
     
-
+    var scrollView: UIScrollView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +21,60 @@ class MBMainViewController: UIViewController {
         
         self.setupNavigation()
         
+        self.setupScrollView()
+        
         self.setupMiniPlayerView()
+        
+        print(self.view.bounds)
+    }
+    
+    func setupScrollView() {
+        self.automaticallyAdjustsScrollViewInsets = false
+    
+        var frame = self.view.bounds
+        frame.origin.y = 0//self.navigationController!.navigationBar.frame.maxY
+        frame.size.height = frame.size.height - self.navigationController!.navigationBar.frame.maxY - MBMiniPlayerView.shared.frame.height
+        
+        self.scrollView = UIScrollView(frame: frame)
+        self.scrollView!.bounces = false
+        self.scrollView!.isPagingEnabled = true
+        self.scrollView!.showsHorizontalScrollIndicator = false
+        self.scrollView!.delegate = self
+        
+        let width = self.scrollView!.frame.width
+        let height = self.scrollView!.frame.height
+        
+        self.scrollView?.contentSize = CGSize(width: 3 * width, height: 0)
+        
+        for index in 0..<3 {
+            
+            switch index {
+                case 0:
+                    let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height))
+                    imageView.image = UIImage(named: "Welcome_3.0_\(index + 1)")
+                        
+                    self.scrollView?.addSubview(imageView)
+                
+                case 1:
+                    let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height))
+                    imageView.image = UIImage(named: "Welcome_3.0_\(index + 1)")
+                    
+                    self.scrollView?.addSubview(imageView)
+                
+                case 2:
+                    let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height))
+                    imageView.image = UIImage(named: "Welcome_3.0_\(index + 1)")
+                
+                    self.scrollView?.addSubview(imageView)
+                
+                default:
+                    print("No this Page of Index: \(index)")
+                
+            }
+        }
+        
+        self.view.addSubview(self.scrollView!)
+    
     }
     
     func setupMiniPlayerView() {
@@ -54,6 +108,8 @@ class MBMainViewController: UIViewController {
         titleView.channelLabel.text = "音乐馆"
         titleView.discoverLabel.text = "发现"
         
+        titleView.updateLabelTextColor(titleView.myMusicLabel)
+        
         let tapMyMusicLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
         let tapChannelLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
         let tapDiscoverLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
@@ -83,4 +139,28 @@ class MBMainViewController: UIViewController {
             self.miniPlayerView?.isEnable = false
         }
     }
+    
+    /** UIScrollViewDelegate */
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width + 0.5)
+
+        let titleView = self.navigationItem.titleView as! MBNavigationItemTitleView
+        
+        switch currentPage {
+            case 0:
+                titleView.updateLabelTextColor(titleView.myMusicLabel)
+            
+            case 1:
+                titleView.updateLabelTextColor(titleView.channelLabel)
+            
+            case 2:
+                titleView.updateLabelTextColor(titleView.discoverLabel)
+            
+            default:
+                print("No this Page of Index: \(currentPage)")
+            
+        }
+        
+    }
+
 }

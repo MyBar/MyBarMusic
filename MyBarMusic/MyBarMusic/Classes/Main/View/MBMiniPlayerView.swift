@@ -45,6 +45,8 @@ class MBMiniPlayerView: UIView {
         self.miniPlayerView?.setupButtons()
         self.miniPlayerView?.setupScrollView()
         
+        self.miniPlayerView?.isEnable = false
+        
         return self.miniPlayerView!
     }
     

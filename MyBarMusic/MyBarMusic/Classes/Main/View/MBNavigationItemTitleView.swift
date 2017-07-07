@@ -26,17 +26,20 @@ class MBNavigationItemTitleView: UIView {
     }
 
     func tapGestureRecognizerAction(_ sender: UITapGestureRecognizer) {
-        if sender.view == self.myMusicLabel {
+        let label = sender.view as! UILabel
+        self.updateLabelTextColor(label)
+    }
+    
+    func updateLabelTextColor(_ label: UILabel) {
+        if label == self.myMusicLabel {
             self.myMusicLabel.textColor = UIColor.white
             self.channelLabel.textColor = UIColor.lightText
             self.discoverLabel.textColor = UIColor.lightText
-            
-        } else if sender.view == self.channelLabel {
+        } else if label == self.channelLabel {
             self.myMusicLabel.textColor = UIColor.lightText
             self.channelLabel.textColor = UIColor.white
             self.discoverLabel.textColor = UIColor.lightText
-            
-        } else if sender.view == self.discoverLabel {
+        } else {
             self.myMusicLabel.textColor = UIColor.lightText
             self.channelLabel.textColor = UIColor.lightText
             self.discoverLabel.textColor = UIColor.white
