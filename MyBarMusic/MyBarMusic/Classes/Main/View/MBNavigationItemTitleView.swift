@@ -24,11 +24,6 @@ class MBNavigationItemTitleView: UIView {
         
         return self.titleView!
     }
-
-    func tapGestureRecognizerAction(_ sender: UITapGestureRecognizer) {
-        let label = sender.view as! UILabel
-        self.updateLabelTextColor(label)
-    }
     
     func updateLabelTextColor(_ label: UILabel) {
         if label == self.myMusicLabel {

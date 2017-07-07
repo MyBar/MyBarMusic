@@ -110,9 +110,9 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         
         titleView.updateLabelTextColor(titleView.myMusicLabel)
         
-        let tapMyMusicLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
-        let tapChannelLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
-        let tapDiscoverLabelGestureRecognizer = UITapGestureRecognizer(target: titleView, action: #selector(MBNavigationItemTitleView.tapGestureRecognizerAction(_:)))
+        let tapMyMusicLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapGestureRecognizerAction(_:)))
+        let tapChannelLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapGestureRecognizerAction(_:)))
+        let tapDiscoverLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapGestureRecognizerAction(_:)))
         
         titleView.myMusicLabel.isUserInteractionEnabled = true
         titleView.channelLabel.isUserInteractionEnabled = true
@@ -123,6 +123,26 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         titleView.discoverLabel.addGestureRecognizer(tapDiscoverLabelGestureRecognizer)
         
         self.navigationItem.titleView = titleView
+        
+    }
+    
+    func tapGestureRecognizerAction(_ sender: UITapGestureRecognizer) {
+        let titleView = self.navigationItem.titleView as! MBNavigationItemTitleView
+        
+        let label = sender.view as! UILabel
+        
+        let currentPage = Int(self.scrollView!.contentOffset.x / self.scrollView!.frame.width + 0.5)
+        
+        if label == titleView.myMusicLabel && currentPage != 0 {
+            self.scrollView!.contentOffset.x = 0
+            titleView.updateLabelTextColor(label)
+        } else if label == titleView.channelLabel && currentPage != 1 {
+            self.scrollView!.contentOffset.x = self.scrollView!.frame.width
+            titleView.updateLabelTextColor(label)
+        } else if label == titleView.discoverLabel && currentPage != 2 {
+            self.scrollView!.contentOffset.x = self.scrollView!.frame.width * 2
+            titleView.updateLabelTextColor(label)
+        }
         
     }
 
