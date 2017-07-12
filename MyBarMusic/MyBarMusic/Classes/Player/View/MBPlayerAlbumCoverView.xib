@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MBPlayerAlbumCoverView" customModule="MyBarMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一   李金桂   一" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wSM-zI-Int" userLabel="Singer Label">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="yFJ-bh-oup"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h20-Mm-oJ5" userLabel="Player Effect View">
+                    <rect key="frame" x="0.0" y="29" width="375" height="18"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L94-DN-3dv">
+                            <rect key="frame" x="160" y="0.0" width="50" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="player_btn_hq_sel_normal"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="lXn-0l-cSt"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="player_albumcover_default" translatesAutoresizingMaskIntoConstraints="NO" id="b9i-zI-U19" userLabel="Album Cover Image View">
+                    <rect key="frame" x="0.0" y="55" width="375" height="375"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="曲：李金桂" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbR-c9-0vH" userLabel="Lyric Label">
+                    <rect key="frame" x="0.0" y="438" width="375" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="fnr-Vw-tz4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <constraints>
+                <constraint firstItem="h20-Mm-oJ5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3mc-Bi-cxc"/>
+                <constraint firstItem="h20-Mm-oJ5" firstAttribute="top" secondItem="wSM-zI-Int" secondAttribute="bottom" constant="8" id="3nf-L8-0Eh"/>
+                <constraint firstAttribute="trailing" secondItem="wSM-zI-Int" secondAttribute="trailing" id="R2j-2t-bqJ"/>
+                <constraint firstAttribute="trailing" secondItem="bbR-c9-0vH" secondAttribute="trailing" id="RBx-nn-CFm"/>
+                <constraint firstItem="bbR-c9-0vH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TNb-Y7-Fsy"/>
+                <constraint firstItem="wSM-zI-Int" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jry-Pj-bS6"/>
+                <constraint firstItem="wSM-zI-Int" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="krZ-Ub-SDg"/>
+                <constraint firstAttribute="bottom" secondItem="bbR-c9-0vH" secondAttribute="bottom" constant="8" id="wbf-wT-1Sx"/>
+                <constraint firstAttribute="trailing" secondItem="h20-Mm-oJ5" secondAttribute="trailing" id="xMj-MG-7tk"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="albumCoverImageView" destination="b9i-zI-U19" id="dB7-hR-PRR"/>
+                <outlet property="lyricLabel" destination="bbR-c9-0vH" id="t0D-xF-MpV"/>
+                <outlet property="playerEffectView" destination="h20-Mm-oJ5" id="9fR-P2-3nf"/>
+                <outlet property="singerLabel" destination="wSM-zI-Int" id="NWa-Sg-PdG"/>
+            </connections>
+            <point key="canvasLocation" x="67.5" y="39"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="player_albumcover_default" width="250" height="250"/>
+        <image name="player_btn_hq_sel_normal" width="50" height="18"/>
+    </resources>
+</document>

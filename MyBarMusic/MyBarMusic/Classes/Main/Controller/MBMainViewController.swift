@@ -24,16 +24,14 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         self.setupScrollView()
         
         self.setupMiniPlayerView()
-        
-        print(self.view.bounds)
     }
     
     func setupScrollView() {
         self.automaticallyAdjustsScrollViewInsets = false
     
         var frame = self.view.bounds
-        frame.origin.y = 0//self.navigationController!.navigationBar.frame.maxY
-        frame.size.height = frame.size.height - self.navigationController!.navigationBar.frame.maxY - MBMiniPlayerView.shared.frame.height
+        frame.origin.y = 0
+        frame.size.height = frame.size.height - MBMiniPlayerView.shared.frame.height
         
         self.scrollView = UIScrollView(frame: frame)
         self.scrollView!.bounces = false
@@ -80,7 +78,7 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
     func setupMiniPlayerView() {
         self.miniPlayerView = MBMiniPlayerView.shared
         
-        self.miniPlayerView?.isEnable = false
+        self.miniPlayerView?.isEnable = true
         
         self.view.addSubview(self.miniPlayerView!)
     }
@@ -89,30 +87,30 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "vc_head_bg"), for: UIBarMetrics.default)
         
         let leftBarButton = UIButton(type: UIButtonType.custom)
-        leftBarButton.setBackgroundImage(UIImage(named: "top_tab_more"), for: UIControlState.normal)
-        leftBarButton.setBackgroundImage(UIImage(named: "top_tab_more_h"), for: UIControlState.highlighted)
+        leftBarButton.setBackgroundImage(UIImage(named: "top_tab_more")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), for: UIControlState.normal)
+        leftBarButton.setBackgroundImage(UIImage(named: "top_tab_more_h")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), for: UIControlState.highlighted)
         leftBarButton.frame.size = leftBarButton.currentBackgroundImage!.size
         leftBarButton.addTarget(self, action: #selector(MBMainViewController.clickNavigationBarButtonItemAction(_:)), for: UIControlEvents.touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarButton)
         
         let rightBarButton = UIButton(type: UIButtonType.custom)
-        rightBarButton.setBackgroundImage(UIImage(named: "search_all"), for: UIControlState.normal)
-        rightBarButton.setBackgroundImage(UIImage(named: "search_all_h"), for: UIControlState.highlighted)
+        rightBarButton.setBackgroundImage(UIImage(named: "search_all")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), for: UIControlState.normal)
+        rightBarButton.setBackgroundImage(UIImage(named: "search_all_h")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), for: UIControlState.highlighted)
         rightBarButton.frame.size = rightBarButton.currentBackgroundImage!.size
         rightBarButton.addTarget(self, action: #selector(MBMainViewController.clickNavigationBarButtonItemAction(_:)), for: UIControlEvents.touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBarButton)
         
         let titleView = MBNavigationItemTitleView.shared
-        titleView.backgroundColor = UIColor(patternImage: (self.navigationController?.navigationBar.backgroundImage(for: UIBarMetrics.default))!)
+        titleView.backgroundColor = UIColor.clear
         titleView.myMusicLabel.text = "我的"
         titleView.channelLabel.text = "音乐馆"
         titleView.discoverLabel.text = "发现"
         
         titleView.updateLabelTextColor(titleView.myMusicLabel)
         
-        let tapMyMusicLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapGestureRecognizerAction(_:)))
-        let tapChannelLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapGestureRecognizerAction(_:)))
-        let tapDiscoverLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapGestureRecognizerAction(_:)))
+        let tapMyMusicLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapTitleViewGestureRecognizerAction(_:)))
+        let tapChannelLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapTitleViewGestureRecognizerAction(_:)))
+        let tapDiscoverLabelGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMainViewController.tapTitleViewGestureRecognizerAction(_:)))
         
         titleView.myMusicLabel.isUserInteractionEnabled = true
         titleView.channelLabel.isUserInteractionEnabled = true
@@ -126,7 +124,7 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func tapGestureRecognizerAction(_ sender: UITapGestureRecognizer) {
+    func tapTitleViewGestureRecognizerAction(_ sender: UITapGestureRecognizer) {
         let titleView = self.navigationItem.titleView as! MBNavigationItemTitleView
         
         let label = sender.view as! UILabel

@@ -23,8 +23,25 @@ class MBMiniPlayerAlbumCoverView: UIView {
         miniPlayerAlbumCoverView!.albumImageView.layer.cornerRadius = miniPlayerAlbumCoverView!.albumImageView.frame.width * 0.5;
         miniPlayerAlbumCoverView!.albumImageView.layer.masksToBounds = true
         
-        miniPlayerAlbumCoverView?.backgroundColor = UIColor(patternImage: UIImage(named: "vc_bg")!)
+        miniPlayerAlbumCoverView?.backgroundColor = UIColor.clear
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: miniPlayerAlbumCoverView, action: #selector(MBMiniPlayerAlbumCoverView.tapAlbumCoverViewGestureRecognizer(_:)))
+        
+        miniPlayerAlbumCoverView?.addGestureRecognizer(tapGestureRecognizer)
         
         return miniPlayerAlbumCoverView!
+    }
+    
+    func tapAlbumCoverViewGestureRecognizer(_ sender: UITapGestureRecognizer) {
+        print("tapMiniPlayerViewGestureRecognizer")
+        
+        let playerViewController = MBPlayerViewController()
+        
+        let navViewController = UINavigationController(rootViewController: playerViewController)
+        
+        let rootVC = UIApplication.shared.keyWindow?.rootViewController
+        
+        rootVC?.present(navViewController, animated: true, completion: nil)
+        
     }
 }

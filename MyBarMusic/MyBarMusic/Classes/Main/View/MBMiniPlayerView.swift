@@ -104,13 +104,6 @@ class MBMiniPlayerView: UIView {
         
         self.scrollView.contentOffset = CGPoint(x: self.scrollView.frame.width, y: 0)
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MBMiniPlayerView.tapScrollViewAction(_:)))
-        self.scrollView.addGestureRecognizer(tapGestureRecognizer)
-        
-    }
-    
-    func tapScrollViewAction(_ sender: UITapGestureRecognizer) {
-        
     }
     
 }

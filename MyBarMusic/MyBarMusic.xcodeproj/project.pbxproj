@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */; };
+		8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */; };
+		8DA516421F14993A002FD491 /* MBPlayerAlbumCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */; };
+		8DA516441F14994C002FD491 /* MBPlayerAlbumCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA516431F14994C002FD491 /* MBPlayerAlbumCoverView.xib */; };
 		8DA7F4901F0E2B8100DBEE8C /* MBMiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7F48F1F0E2B8100DBEE8C /* MBMiniPlayerView.swift */; };
 		8DA7F4921F0E2B9600DBEE8C /* MBMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7F4911F0E2B9600DBEE8C /* MBMiniPlayerView.xib */; };
 		8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */; };
 		8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */; };
+		8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */; };
 		8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD6C1F0C94510035EE87 /* AppDelegate.swift */; };
 		8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE8BD731F0C94510035EE87 /* Assets.xcassets */; };
 		8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD891F0C98520035EE87 /* MBMainViewController.swift */; };
@@ -20,10 +25,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerControlPadView.swift; sourceTree = "<group>"; };
+		8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBPlayerControlPadView.xib; sourceTree = "<group>"; };
+		8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerAlbumCoverView.swift; sourceTree = "<group>"; };
+		8DA516431F14994C002FD491 /* MBPlayerAlbumCoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBPlayerAlbumCoverView.xib; sourceTree = "<group>"; };
 		8DA7F48F1F0E2B8100DBEE8C /* MBMiniPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMiniPlayerView.swift; sourceTree = "<group>"; };
 		8DA7F4911F0E2B9600DBEE8C /* MBMiniPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMiniPlayerView.xib; sourceTree = "<group>"; };
 		8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMiniPlayerAlbumCoverView.swift; sourceTree = "<group>"; };
 		8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMiniPlayerAlbumCoverView.xib; sourceTree = "<group>"; };
+		8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerViewController.swift; sourceTree = "<group>"; };
 		8DE8BD691F0C94510035EE87 /* MyBarMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBarMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE8BD6C1F0C94510035EE87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DE8BD731F0C94510035EE87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,6 +148,42 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8DDCED551F10E59C00C1657B /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				8DDCED561F10E59C00C1657B /* Controller */,
+				8DDCED571F10E59C00C1657B /* Model */,
+				8DDCED581F10E59C00C1657B /* View */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		8DDCED561F10E59C00C1657B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8DDCED571F10E59C00C1657B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DDCED581F10E59C00C1657B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */,
+				8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */,
+				8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */,
+				8DA516431F14994C002FD491 /* MBPlayerAlbumCoverView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8DE8BD601F0C94510035EE87 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +217,7 @@
 				8DA618A51F0F730B005C6BC4 /* MyMusic */,
 				8DA6189D1F0F730B005C6BC4 /* Channel */,
 				8DA618A11F0F730B005C6BC4 /* Discover */,
+				8DDCED551F10E59C00C1657B /* Player */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -317,6 +364,8 @@
 			files = (
 				8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */,
 				8DE8BD911F0CD3420035EE87 /* MBNavigationItemTitleView.xib in Resources */,
+				8DA516441F14994C002FD491 /* MBPlayerAlbumCoverView.xib in Resources */,
+				8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */,
 				8DA7F4921F0E2B9600DBEE8C /* MBMiniPlayerView.xib in Resources */,
 				8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */,
 			);
@@ -333,8 +382,11 @@
 				8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */,
 				8DA7F4901F0E2B8100DBEE8C /* MBMiniPlayerView.swift in Sources */,
 				8DE8BD8F1F0CD3060035EE87 /* MBNavigationItemTitleView.swift in Sources */,
+				8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */,
 				8DE8BD8D1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift in Sources */,
 				8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */,
+				8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */,
+				8DA516421F14993A002FD491 /* MBPlayerAlbumCoverView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
