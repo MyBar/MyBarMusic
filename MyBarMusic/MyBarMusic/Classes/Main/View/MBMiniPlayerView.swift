@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MBMiniPlayerView: UIView {
+class MBMiniPlayerView: UIView, UIScrollViewDelegate {
 
     @IBOutlet weak var separatorView: UIView!
     
@@ -90,6 +90,8 @@ class MBMiniPlayerView: UIView {
         
         self.scrollView.contentSize = CGSize(width: self.scrollView.frame.width * 3, height: self.scrollView.frame.height)
         
+        self.scrollView.delegate = self
+        
         self.preMiniPlayerAlbumCoverView = MBMiniPlayerAlbumCoverView.miniPlayerAlbumCoverView
         self.preMiniPlayerAlbumCoverView?.frame = CGRect(x: 0, y: self.scrollView.frame.origin.y, width: self.scrollView.frame.width, height: self.scrollView.frame.height)
         self.scrollView.addSubview(self.preMiniPlayerAlbumCoverView!)
@@ -106,4 +108,52 @@ class MBMiniPlayerView: UIView {
         
     }
     
+    /** UIScrollViewDelegate */
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //关于设置一个范围因为调试的时候发现contentOffset.x有时候不是0，self.scrollView.frame.width, self.scrollView.frame.width * CGFloat(2)
+        if scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x <= 10 {
+            
+            var x = preMiniPlayerAlbumCoverView!.frame.origin.x + scrollView.frame.width
+            if x >= scrollView.contentSize.width {
+                x = 0
+            }
+            preMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+            
+            x += scrollView.frame.width
+            if x >= scrollView.contentSize.width {
+                x = 0
+            }
+            currentMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+            
+            x += scrollView.frame.width
+            if x >= scrollView.contentSize.width {
+                x = 0
+            }
+            nextMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+        }
+        
+        if scrollView.contentOffset.x >= scrollView.frame.width * CGFloat(2) - 10 && scrollView.contentOffset.x <= scrollView.frame.width * CGFloat(2) + 10 {
+            
+            var x = preMiniPlayerAlbumCoverView!.frame.origin.x - scrollView.frame.width
+            if x < 0 {
+                x = scrollView.frame.width * CGFloat(2)
+            }
+            preMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+            
+            x += scrollView.frame.width
+            if x >= scrollView.contentSize.width {
+                x = 0
+            }
+            currentMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+            
+            x += scrollView.frame.width
+            if x >= scrollView.contentSize.width {
+                x = 0
+            }
+            nextMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+        }
+
+        scrollView.contentOffset = CGPoint(x: self.scrollView.frame.width, y: 0)
+
+    }
 }
