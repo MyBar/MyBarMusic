@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D9047021F15AA320091AF17 /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9047011F15AA320091AF17 /* UIImageView+Animation.swift */; };
 		8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */; };
 		8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */; };
 		8DA516421F14993A002FD491 /* MBPlayerAlbumCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D9047011F15AA320091AF17 /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
 		8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerControlPadView.swift; sourceTree = "<group>"; };
 		8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBPlayerControlPadView.xib; sourceTree = "<group>"; };
 		8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerAlbumCoverView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D9047001F15A8A80091AF17 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8D9047011F15AA320091AF17 /* UIImageView+Animation.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		8DA6189D1F0F730B005C6BC4 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +228,7 @@
 				8DA6189D1F0F730B005C6BC4 /* Channel */,
 				8DA618A11F0F730B005C6BC4 /* Discover */,
 				8DDCED551F10E59C00C1657B /* Player */,
+				8D9047001F15A8A80091AF17 /* Extension */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -385,6 +396,7 @@
 				8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */,
 				8DE8BD8D1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift in Sources */,
 				8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */,
+				8D9047021F15AA320091AF17 /* UIImageView+Animation.swift in Sources */,
 				8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */,
 				8DA516421F14993A002FD491 /* MBPlayerAlbumCoverView.swift in Sources */,
 			);

@@ -24,6 +24,8 @@ class MBPlayerControlPadView: UIView {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     
+    var playerAlbumCoverView: MBPlayerAlbumCoverView?
+    
     class var playerControlPadView: MBPlayerControlPadView {
         
         let playerControlPadView = Bundle.main.loadNibNamed("MBPlayerControlPadView", owner: nil, options: nil)?.last as? MBPlayerControlPadView
@@ -82,4 +84,22 @@ class MBPlayerControlPadView: UIView {
     func updatePageControlCurrentPage(_ currentPage: Int) {
         self.pageControl.currentPage = currentPage
     }
+    
+    @IBAction func clickPlayControlButtonAction(_ sender: UIButton) {
+        
+        if sender == self.preButton {
+            self.playerAlbumCoverView?.albumCoverImageView.RemoveAnimation()
+            self.playerAlbumCoverView?.albumCoverImageView.initAnimationWithSpeed(0.1)
+            self.playerAlbumCoverView?.albumCoverImageView.startAnimation()
+        } else if sender == self.playOrPauseButton {
+            self.playerAlbumCoverView?.albumCoverImageView.pauseAnimation()
+            
+        } else if sender == self.nextButton {
+            self.playerAlbumCoverView?.albumCoverImageView.RemoveAnimation()
+            self.playerAlbumCoverView?.albumCoverImageView.initAnimationWithSpeed(0.2)
+            self.playerAlbumCoverView?.albumCoverImageView.startAnimation()
+        }
+        
+    }
+    
 }

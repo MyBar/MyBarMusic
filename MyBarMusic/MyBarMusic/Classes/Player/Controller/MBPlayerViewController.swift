@@ -100,6 +100,8 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
                 
                 self.scrollView?.addSubview(playerAlbumCoverView)
                 
+                self.playerControlPadView?.playerAlbumCoverView = playerAlbumCoverView
+                
             case 2:
                 let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height))
                 imageView.image = UIImage(named: "Welcome_3.0_\(index + 1)")

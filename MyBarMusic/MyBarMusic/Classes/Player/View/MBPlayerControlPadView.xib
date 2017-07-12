@@ -78,6 +78,9 @@
                                 <constraint firstAttribute="width" constant="64" id="Huu-P8-a2D"/>
                             </constraints>
                             <state key="normal" backgroundImage="player_btn_pre_normal"/>
+                            <connections>
+                                <action selector="clickPlayControlButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="f2t-qE-CoT"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mem-r5-X84" userLabel="Next Button">
                             <rect key="frame" x="242.5" y="0.0" width="64" height="64"/>
@@ -86,6 +89,9 @@
                                 <constraint firstAttribute="width" constant="64" id="JoL-vx-FcA"/>
                             </constraints>
                             <state key="normal" backgroundImage="player_btn_next_normal"/>
+                            <connections>
+                                <action selector="clickPlayControlButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="NTN-02-du3"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LB-Mc-r2m" userLabel="Playlist Button">
                             <rect key="frame" x="316" y="7" width="50" height="50"/>
@@ -102,6 +108,9 @@
                                 <constraint firstAttribute="height" constant="64" id="go5-gm-75s"/>
                             </constraints>
                             <state key="normal" backgroundImage="player_btn_play_normal"/>
+                            <connections>
+                                <action selector="clickPlayControlButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="3vW-Ss-Xij"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
