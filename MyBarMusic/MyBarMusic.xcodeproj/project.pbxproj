@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070D7E6EAA4563D242651AC9 /* Pods_MyBarMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C93FE038ED7BFE209364C5 /* Pods_MyBarMusic.framework */; };
 		8D9047021F15AA320091AF17 /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9047011F15AA320091AF17 /* UIImageView+Animation.swift */; };
 		8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */; };
 		8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */; };
@@ -17,6 +18,9 @@
 		8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */; };
 		8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */; };
 		8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */; };
+		8DE88CBA1F1856F000684279 /* MBSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE88CB81F1856F000684279 /* MBSettingViewController.swift */; };
+		8DE88CBB1F1856F000684279 /* MBSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE88CB91F1856F000684279 /* MBSettingViewController.xib */; };
+		8DE88CBD1F18618600684279 /* MBSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE88CBC1F18618600684279 /* MBSlideMenuController.swift */; };
 		8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD6C1F0C94510035EE87 /* AppDelegate.swift */; };
 		8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE8BD731F0C94510035EE87 /* Assets.xcassets */; };
 		8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD891F0C98520035EE87 /* MBMainViewController.swift */; };
@@ -26,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C8D9CD5285A72B7EBE80A1B /* Pods-MyBarMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBarMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyBarMusic/Pods-MyBarMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		8D9047011F15AA320091AF17 /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
 		8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerControlPadView.swift; sourceTree = "<group>"; };
 		8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBPlayerControlPadView.xib; sourceTree = "<group>"; };
@@ -36,6 +41,9 @@
 		8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMiniPlayerAlbumCoverView.swift; sourceTree = "<group>"; };
 		8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMiniPlayerAlbumCoverView.xib; sourceTree = "<group>"; };
 		8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerViewController.swift; sourceTree = "<group>"; };
+		8DE88CB81F1856F000684279 /* MBSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSettingViewController.swift; sourceTree = "<group>"; };
+		8DE88CB91F1856F000684279 /* MBSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBSettingViewController.xib; sourceTree = "<group>"; };
+		8DE88CBC1F18618600684279 /* MBSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSlideMenuController.swift; sourceTree = "<group>"; };
 		8DE8BD691F0C94510035EE87 /* MyBarMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBarMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE8BD6C1F0C94510035EE87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DE8BD731F0C94510035EE87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +52,8 @@
 		8DE8BD8C1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNewFeatureViewController.swift; sourceTree = "<group>"; };
 		8DE8BD8E1F0CD3060035EE87 /* MBNavigationItemTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNavigationItemTitleView.swift; sourceTree = "<group>"; };
 		8DE8BD901F0CD3420035EE87 /* MBNavigationItemTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBNavigationItemTitleView.xib; sourceTree = "<group>"; };
+		E1C93FE038ED7BFE209364C5 /* Pods_MyBarMusic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyBarMusic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1D2B031A43DBF28AE3E0060 /* Pods-MyBarMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBarMusic.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyBarMusic/Pods-MyBarMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,12 +61,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				070D7E6EAA4563D242651AC9 /* Pods_MyBarMusic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51067E35C44872145A201C52 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C8D9CD5285A72B7EBE80A1B /* Pods-MyBarMusic.debug.xcconfig */,
+				E1D2B031A43DBF28AE3E0060 /* Pods-MyBarMusic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7B6726CC18272FCAE384AD53 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1C93FE038ED7BFE209364C5 /* Pods_MyBarMusic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8D9047001F15A8A80091AF17 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,11 +222,47 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8DE88CB41F18566500684279 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8DE88CB51F18566500684279 /* Controller */,
+				8DE88CB61F18566500684279 /* Model */,
+				8DE88CB71F18566500684279 /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		8DE88CB51F18566500684279 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8DE88CB81F1856F000684279 /* MBSettingViewController.swift */,
+				8DE88CB91F1856F000684279 /* MBSettingViewController.xib */,
+				8DE88CBC1F18618600684279 /* MBSlideMenuController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8DE88CB61F18566500684279 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DE88CB71F18566500684279 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		8DE8BD601F0C94510035EE87 = {
 			isa = PBXGroup;
 			children = (
 				8DE8BD6B1F0C94510035EE87 /* MyBarMusic */,
 				8DE8BD6A1F0C94510035EE87 /* Products */,
+				51067E35C44872145A201C52 /* Pods */,
+				7B6726CC18272FCAE384AD53 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -228,6 +292,7 @@
 				8DA6189D1F0F730B005C6BC4 /* Channel */,
 				8DA618A11F0F730B005C6BC4 /* Discover */,
 				8DDCED551F10E59C00C1657B /* Player */,
+				8DE88CB41F18566500684279 /* Setting */,
 				8D9047001F15A8A80091AF17 /* Extension */,
 			);
 			path = Classes;
@@ -320,9 +385,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DE8BD7B1F0C94510035EE87 /* Build configuration list for PBXNativeTarget "MyBarMusic" */;
 			buildPhases = (
+				314B18D52DE8CF5679001009 /* [CP] Check Pods Manifest.lock */,
 				8DE8BD651F0C94510035EE87 /* Sources */,
 				8DE8BD661F0C94510035EE87 /* Frameworks */,
 				8DE8BD671F0C94510035EE87 /* Resources */,
+				D49E6A77B0AAB754901B2D68 /* [CP] Embed Pods Frameworks */,
+				11BFB7277ED49C52E6585FF0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -377,12 +445,61 @@
 				8DE8BD911F0CD3420035EE87 /* MBNavigationItemTitleView.xib in Resources */,
 				8DA516441F14994C002FD491 /* MBPlayerAlbumCoverView.xib in Resources */,
 				8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */,
+				8DE88CBB1F1856F000684279 /* MBSettingViewController.xib in Resources */,
 				8DA7F4921F0E2B9600DBEE8C /* MBMiniPlayerView.xib in Resources */,
 				8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		11BFB7277ED49C52E6585FF0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyBarMusic/Pods-MyBarMusic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		314B18D52DE8CF5679001009 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D49E6A77B0AAB754901B2D68 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyBarMusic/Pods-MyBarMusic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8DE8BD651F0C94510035EE87 /* Sources */ = {
@@ -391,6 +508,8 @@
 			files = (
 				8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */,
 				8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */,
+				8DE88CBA1F1856F000684279 /* MBSettingViewController.swift in Sources */,
+				8DE88CBD1F18618600684279 /* MBSlideMenuController.swift in Sources */,
 				8DA7F4901F0E2B8100DBEE8C /* MBMiniPlayerView.swift in Sources */,
 				8DE8BD8F1F0CD3060035EE87 /* MBNavigationItemTitleView.swift in Sources */,
 				8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */,
@@ -500,6 +619,7 @@
 		};
 		8DE8BD7C1F0C94510035EE87 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C8D9CD5285A72B7EBE80A1B /* Pods-MyBarMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -515,6 +635,7 @@
 		};
 		8DE8BD7D1F0C94510035EE87 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1D2B031A43DBF28AE3E0060 /* Pods-MyBarMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

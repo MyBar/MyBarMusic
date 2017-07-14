@@ -38,7 +38,7 @@ class MBMiniPlayerView: UIView, UIScrollViewDelegate {
         
         let miniPlayerViewHeight: CGFloat = 57.0
         
-        let navigationBarAndStatusBarHeight: CGFloat = (UIApplication.shared.keyWindow!.rootViewController as! UINavigationController).navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
+        let navigationBarAndStatusBarHeight: CGFloat = (UIApplication.shared.keyWindow!.rootViewController?.slideMenuController()?.mainViewController as! UINavigationController).navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
         
         self.miniPlayerView?.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - miniPlayerViewHeight - navigationBarAndStatusBarHeight, width: UIScreen.main.bounds.width, height: miniPlayerViewHeight)
         

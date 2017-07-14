@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,7 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let lastVersion = UserDefaults.standard.value(forKeyPath: bundleVersionKey) as? String
         
         if currentVersion == lastVersion && lastVersion != nil {
-            self.window?.rootViewController = UINavigationController(rootViewController: MBMainViewController())
+            let navVC = UINavigationController(rootViewController: MBMainViewController())
+            let settingVC = MBSettingViewController()
+            SlideMenuOptions.hideStatusBar = false
+            SlideMenuOptions.leftViewWidth = UIScreen.main.bounds.width * 0.8
+            let slideMenuController = MBSlideMenuController(mainViewController: navVC, leftMenuViewController: settingVC)
+            
+            self.window?.rootViewController = slideMenuController
         } else {
             self.window?.rootViewController = MBNewFeatureViewController()
             

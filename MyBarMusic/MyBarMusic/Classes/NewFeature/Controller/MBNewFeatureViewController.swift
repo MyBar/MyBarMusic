@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 class MBNewFeatureViewController: UIViewController, UIScrollViewDelegate {
     
@@ -65,7 +66,13 @@ class MBNewFeatureViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func tapAction() {
-        self.view.window?.rootViewController = UINavigationController(rootViewController: MBMainViewController())
+        let navVC = UINavigationController(rootViewController: MBMainViewController())
+        let settingVC = MBSettingViewController()
+        SlideMenuOptions.hideStatusBar = false
+        SlideMenuOptions.leftViewWidth = UIScreen.main.bounds.width * 0.8
+        let slideMenuController = MBSlideMenuController(mainViewController: navVC, leftMenuViewController: settingVC)
+        
+        self.view.window?.rootViewController = slideMenuController
     }
     
     //UIScrollViewDelegate的方法

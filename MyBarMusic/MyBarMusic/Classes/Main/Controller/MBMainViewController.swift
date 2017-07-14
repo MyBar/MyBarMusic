@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 class MBMainViewController: UIViewController, UIScrollViewDelegate {
     
@@ -122,6 +123,9 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         
         self.navigationItem.titleView = titleView
         
+        self.slideMenuController()?.removeLeftGestures()
+        self.slideMenuController()?.addLeftGestures()
+        
     }
     
     func tapTitleViewGestureRecognizerAction(_ sender: UITapGestureRecognizer) {
@@ -148,6 +152,8 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         
         if sender == self.navigationItem.leftBarButtonItem?.customView {
             print("leftBarButtonItem")
+            
+            self.slideMenuController()?.toggleLeft()
             
             self.miniPlayerView?.isEnable = true
             
