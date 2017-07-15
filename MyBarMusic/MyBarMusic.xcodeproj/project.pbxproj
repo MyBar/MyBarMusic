@@ -21,6 +21,8 @@
 		8DE88CBA1F1856F000684279 /* MBSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE88CB81F1856F000684279 /* MBSettingViewController.swift */; };
 		8DE88CBB1F1856F000684279 /* MBSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE88CB91F1856F000684279 /* MBSettingViewController.xib */; };
 		8DE88CBD1F18618600684279 /* MBSlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE88CBC1F18618600684279 /* MBSlideMenuController.swift */; };
+		8DE88CC41F18B14D00684279 /* MBSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE88CC21F18B14D00684279 /* MBSwitchTableViewCell.swift */; };
+		8DE88CC51F18B14D00684279 /* MBSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE88CC31F18B14D00684279 /* MBSwitchTableViewCell.xib */; };
 		8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD6C1F0C94510035EE87 /* AppDelegate.swift */; };
 		8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE8BD731F0C94510035EE87 /* Assets.xcassets */; };
 		8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE8BD891F0C98520035EE87 /* MBMainViewController.swift */; };
@@ -44,6 +46,8 @@
 		8DE88CB81F1856F000684279 /* MBSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSettingViewController.swift; sourceTree = "<group>"; };
 		8DE88CB91F1856F000684279 /* MBSettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBSettingViewController.xib; sourceTree = "<group>"; };
 		8DE88CBC1F18618600684279 /* MBSlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSlideMenuController.swift; sourceTree = "<group>"; };
+		8DE88CC21F18B14D00684279 /* MBSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MBSwitchTableViewCell.swift; path = MyBarMusic/Classes/Setting/Controller/MBSwitchTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		8DE88CC31F18B14D00684279 /* MBSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MBSwitchTableViewCell.xib; path = MyBarMusic/Classes/Setting/Controller/MBSwitchTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		8DE8BD691F0C94510035EE87 /* MyBarMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBarMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE8BD6C1F0C94510035EE87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DE8BD731F0C94510035EE87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 		8DE88CB71F18566500684279 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8DE88CC21F18B14D00684279 /* MBSwitchTableViewCell.swift */,
+				8DE88CC31F18B14D00684279 /* MBSwitchTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -447,6 +453,7 @@
 				8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */,
 				8DE88CBB1F1856F000684279 /* MBSettingViewController.xib in Resources */,
 				8DA7F4921F0E2B9600DBEE8C /* MBMiniPlayerView.xib in Resources */,
+				8DE88CC51F18B14D00684279 /* MBSwitchTableViewCell.xib in Resources */,
 				8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +521,7 @@
 				8DE8BD8F1F0CD3060035EE87 /* MBNavigationItemTitleView.swift in Sources */,
 				8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */,
 				8DE8BD8D1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift in Sources */,
+				8DE88CC41F18B14D00684279 /* MBSwitchTableViewCell.swift in Sources */,
 				8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */,
 				8D9047021F15AA320091AF17 /* UIImageView+Animation.swift in Sources */,
 				8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */,
