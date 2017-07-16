@@ -1,12 +1,15 @@
 PODS:
+  - HandyJSON (1.7.2)
   - SlideMenuControllerSwift (3.0.1)
 
 DEPENDENCIES:
+  - HandyJSON (~> 1.7.2)
   - SlideMenuControllerSwift
 
 SPEC CHECKSUMS:
+  HandyJSON: e7ad0483005826baba1d1c251cd98d0aa8bd8cce
   SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
 
-PODFILE CHECKSUM: 7fbfa908b6f7249692ca0091c5514df2e8da16e7
+PODFILE CHECKSUM: ef798f829b007df4ab212c8e5166c22c6ca003d1
 
 COCOAPODS: 1.2.1
