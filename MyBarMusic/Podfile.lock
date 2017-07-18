@@ -1,15 +1,18 @@
 PODS:
+  - Alamofire (4.5.0)
   - HandyJSON (1.7.2)
   - SlideMenuControllerSwift (3.0.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.4)
   - HandyJSON (~> 1.7.2)
   - SlideMenuControllerSwift
 
 SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   HandyJSON: e7ad0483005826baba1d1c251cd98d0aa8bd8cce
   SlideMenuControllerSwift: 9a163b16d54afab734add42858cba7ef7c307755
 
-PODFILE CHECKSUM: ef798f829b007df4ab212c8e5166c22c6ca003d1
+PODFILE CHECKSUM: a95b861d5a7c61b91da2e9bb8d2593c79fbd1348
 
 COCOAPODS: 1.2.1

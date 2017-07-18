@@ -15,6 +15,8 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
     
     var scrollView: UIScrollView?
     
+    var channelVC: MBChannelViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,15 +26,17 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         
         self.setupScrollView()
         
-        self.setupMiniPlayerView()
+        self.miniPlayerView = self.setupMiniPlayerView()
     }
     
     func setupScrollView() {
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        let navigationBarAndStatusBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
     
         var frame = self.view.bounds
         frame.origin.y = 0
-        frame.size.height = frame.size.height - MBMiniPlayerView.shared.frame.height
+        frame.size.height = frame.size.height - MBMiniPlayerView.shared.frame.height - navigationBarAndStatusBarHeight
         
         self.scrollView = UIScrollView(frame: frame)
         self.scrollView!.bounces = false
@@ -55,10 +59,10 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
                     self.scrollView?.addSubview(imageView)
                 
                 case 1:
-                    let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height))
-                    imageView.image = UIImage(named: "Welcome_3.0_\(index + 1)")
+                    self.channelVC = MBChannelViewController()
+                    channelVC!.view.frame = CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height)
                     
-                    self.scrollView?.addSubview(imageView)
+                    self.scrollView?.addSubview(self.channelVC!.view)
                 
                 case 2:
                     let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height))
@@ -74,14 +78,6 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         
         self.view.addSubview(self.scrollView!)
     
-    }
-    
-    func setupMiniPlayerView() {
-        self.miniPlayerView = MBMiniPlayerView.shared
-        
-        self.miniPlayerView?.isEnable = true
-        
-        self.view.addSubview(self.miniPlayerView!)
     }
 
     func setupNavigation() {
@@ -186,5 +182,8 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         }
         
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.miniPlayerView = self.setupMiniPlayerView()
+    }
 }

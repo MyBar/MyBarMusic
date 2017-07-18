@@ -14,4 +14,6 @@ target ‘MyBarMusic' do
 
     pod 'HandyJSON', '~> 1.7.2'
 
+    pod 'Alamofire', '~> 4.4'
+
 end
