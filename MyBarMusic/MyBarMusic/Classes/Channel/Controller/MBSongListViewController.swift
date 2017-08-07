@@ -12,14 +12,13 @@ import Alamofire
 
 class MBSongListViewController: UIViewController {
     
-    var songInfoList: [MBSongInfoModel]?
+    var songInfoListModel: MBSongInfoListModel?
     
     var channelID: String?
     
     var miniPlayerView: MBMiniPlayerView?
     
-    var avPlayer: AVPlayer?
-    
+    lazy var playerManager: MBPlayerManager = AppDelegate.delegate.playerManager
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,7 +34,6 @@ class MBSongListViewController: UIViewController {
         
         self.fetchSongInfoList()
         
-        avPlayer = AVPlayer()
     }
     
     func setupNavigation() {
@@ -73,19 +71,21 @@ class MBSongListViewController: UIViewController {
     }
     
     func fetchSongInfoList() {
-        
-        if songInfoList == nil {
-            songInfoList = []
-        }
-        
-        MBNetworkManager.fetchSongInfoList(channelID: self.channelID!, offset: songInfoList!.count) { (isSuccess, songInfoListModel) in
+        MBNetworkManager.fetchSongInfoList(channelID: self.channelID!, offset: self.songInfoListModel?.song_list?.count) { (isSuccess, songInfoListModel) in
             
             if isSuccess == true {
-                if let songList = songInfoListModel?.song_list{
-                    self.songInfoList! += songList
+                
+                if (self.songInfoListModel == nil) || (self.songInfoListModel!.billboard?.billboard_type != songInfoListModel!.billboard?.billboard_type) {
+                    self.songInfoListModel = songInfoListModel
+                } else if self.songInfoListModel!.billboard?.billboard_type == songInfoListModel!.billboard?.billboard_type {
                     
-                    self.tableView.reloadData()
+                    if let songList = songInfoListModel?.song_list{
+                        self.songInfoListModel!.song_list! += songList
+                    }
                 }
+                
+                self.tableView.reloadData()
+                
             } else {
                 
             }
@@ -98,7 +98,7 @@ extension MBSongListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.songInfoList?.count ?? 0
+        return self.songInfoListModel?.song_list?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,7 +112,7 @@ extension MBSongListViewController: UITableViewDataSource {
         
         cell?.backgroundColor = UIColor.clear
         
-        if let songInfo = self.songInfoList?[indexPath.row] {
+        if let songInfo = self.songInfoListModel?.song_list?[indexPath.row] {
             cell?.textLabel?.text = songInfo.title!
         }
         
@@ -125,52 +125,35 @@ extension MBSongListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let songInfo = self.songInfoList![indexPath.row]
-        
-        MBNetworkManager.fetchSong(songID: songInfo.song_id!) { (isSuccess, songModel) in
+        if (playerManager.songInfoList == nil) || (playerManager.songInfoList!.count != self.songInfoListModel!.song_list!.count ) {
             
-            if isSuccess == true {
-                
-                if let currentItem = self.avPlayer?.currentItem {
-                    currentItem.removeObserver(self, forKeyPath: "status")
-                }
-                NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-                
-                let playerItem = AVPlayerItem(url: URL(string: "\(songModel!.bitrate!.file_link!)")!)
-                
-                self.avPlayer!.replaceCurrentItem(with: playerItem)
-                self.avPlayer!.volume = 1
-                
-                self.avPlayer?.currentItem?.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(self.playbackFinished(_:)), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: self.avPlayer?.currentItem)
-                
-            } else {
-                
+            playerManager.songInfoList = self.songInfoListModel!.song_list!
+            playerManager.currentSongInfoModelIndex = indexPath.row
+            playerManager.loadSongModel()
+            
+        } else if (playerManager.songInfoList!.elementsEqual(self.songInfoListModel!.song_list!, by: { (songInfoModel1, songInfoModel2) -> Bool in
+            return songInfoModel1.song_id! == songInfoModel2.song_id!
+        })) {
+            
+            if playerManager.currentSongInfoModelIndex != indexPath.row {
+                playerManager.currentSongInfoModelIndex = indexPath.row
+                playerManager.loadSongModel()
             }
+        } else {
+            playerManager.songInfoList = self.songInfoListModel!.song_list!
+            playerManager.currentSongInfoModelIndex = indexPath.row
+            playerManager.loadSongModel()
         }
         
+        playerManager.startPlay()
         
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "status" {
-            switch self.avPlayer!.status {
-            case AVPlayerStatus.unknown:
-                print("KVO：未知状态，此时不能播放")
-                
-            case AVPlayerStatus.readyToPlay:
-                print("KVO：准备完毕，可以播放")
-                self.avPlayer!.play()
-                
-            case AVPlayerStatus.failed:
-                print("KVO：加载失败，网络或者服务器出现问题")
-            }
-        }
-    }
-    
-    func playbackFinished(_ notice: Notification) {
+        let playerViewController = MBPlayerViewController()
+        let navViewController = UINavigationController(rootViewController: playerViewController)
+        let rootVC = UIApplication.shared.keyWindow?.rootViewController
+        rootVC?.present(navViewController, animated: true, completion: nil)
         
-        print("播放完成")
+        print("\(indexPath.row)")
+        print("\(playerManager.songInfoList!.count)")
     }
     
 }

@@ -13,11 +13,16 @@ import SlideMenuControllerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    lazy var playerManager = MBPlayerManager.shared
 
+    class var delegate: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
+        //初始化窗口
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
         let bundleVersionKey = "CFBundleVersion"
@@ -40,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         self.window?.makeKeyAndVisible()
+        
+        //监听网络变化
+        MBNetworkReachabilityStatusListener.shared.startNetworkReachabilityStatusListening()
         
         return true
     }

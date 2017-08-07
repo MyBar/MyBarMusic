@@ -51,9 +51,46 @@ struct MBSongInfoModel: HandyJSON {
     var song_source: String?
     var resource_type_ext: String?
     var korean_bb_song: String?
-    
+    var is_new: String?
+    var rank_change: String?
+    var rank: String?
+    var style: String?
+    var biaoshi: String?
+    var info: String?
+    var has_filmtv: String?
+    var mv_provider: String?
+    var artist_name: String?
+    var pic_radio: String?
+    var play_type: String?
+    var pic_premium: String?
+    var pic_huge: String?
+    var si_presale_flag: String?
+    var distribution: String?
+    var si_proxycompany: String?
+    var special_type: String?
+    var collect_num: String?
+    var share_num: String?
+    var comment_num: String?
 }
 
+///
+/// 描述：Billboard信息模型
+///
+struct MBBillboardInfoModel: HandyJSON {
+    var billboard_type: String?
+    var billboard_no: String?
+    var update_date: String?
+    var billboard_songnum: String?
+    var havemore: Float?
+    var name: String?
+    var comment: String?
+    var pic_s192: String?
+    var pic_s640: String?
+    var pic_s444: String?
+    var pic_s260: String?
+    var pic_s210: String?
+    var web_url: String?
+}
 
 ///
 /// 描述：歌曲信息列表模型
@@ -64,4 +101,6 @@ struct MBSongInfoListModel: HandyJSON {
     var error_code: String?
     
     var song_list: [MBSongInfoModel]?
+    
+    var billboard: MBBillboardInfoModel?
 }
