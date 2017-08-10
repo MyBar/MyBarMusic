@@ -49,5 +49,26 @@ class MBPlayerAlbumCoverView: UIView {
         self.albumCoverImageView.layer.cornerRadius = self.albumCoverImageView.frame.width / 2
         self.albumCoverImageView.layer.masksToBounds = true
     }
+    
+    //初始化动画
+    func initAnimationWithSpeed(_ speed: Float) {
+        self.albumCoverImageView.initAnimationWithSpeed(speed)
+    }
+    
+    //启动动画
+    func startAnimation() {
+        self.albumCoverImageView.startAnimation()
+        
+    }
+    
+    //暂停动画
+    func pauseAnimation() {
+        self.albumCoverImageView.pauseAnimation()
+    }
+    
+    //移除动画
+    func RemoveAnimation() {
+        self.albumCoverImageView.RemoveAnimation()
+    }
 
 }

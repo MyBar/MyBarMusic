@@ -26,6 +26,8 @@ class MBPlayerControlPadView: UIView {
     
     var playerAlbumCoverView: MBPlayerAlbumCoverView?
     
+    lazy var playerManager: MBPlayerManager = AppDelegate.delegate.playerManager
+    
     class var playerControlPadView: MBPlayerControlPadView {
         
         let playerControlPadView = Bundle.main.loadNibNamed("MBPlayerControlPadView", owner: nil, options: nil)?.last as? MBPlayerControlPadView
@@ -39,7 +41,18 @@ class MBPlayerControlPadView: UIView {
         playerControlPadView?.setupPlayControlView()
         playerControlPadView?.setupMenuView()
         
+        //监听状态变化
+        NotificationCenter.default.addObserver(playerControlPadView!, selector: #selector(playerControlPadView!.observePlayerManagerStatus(_:)), name: NSNotification.Name("playerManagerStatus"), object: nil)
+        
         return playerControlPadView!
+    }
+    
+    deinit {
+        print("===============playerControlPadView deinit===================")
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
+        
+        self.playerAlbumCoverView?.RemoveAnimation()
     }
     
     func setupPageControl() {
@@ -63,11 +76,49 @@ class MBPlayerControlPadView: UIView {
     
     func setupPlayControlView() {
         
+        self.updatePlayModeButton()
+        
+        self.updatePlayOrPauseButton()
+        
         self.preButton.setBackgroundImage(UIImage(named: "player_btn_pre_normal"), for: UIControlState.normal)
         self.preButton.setBackgroundImage(UIImage(named: "player_btn_pre_highlight"), for: UIControlState.highlighted)
         
         self.nextButton.setBackgroundImage(UIImage(named: "player_btn_next_normal"), for: UIControlState.normal)
         self.nextButton.setBackgroundImage(UIImage(named: "player_btn_next_highlight"), for: UIControlState.highlighted)
+    }
+    
+    func updatePlayOrPauseButton() {
+        
+        if self.playerManager.isPlaying == true {
+            self.playOrPauseButton.setBackgroundImage(UIImage(named: "player_btn_pause_normal"), for: UIControlState.normal)
+            self.playOrPauseButton.setBackgroundImage(UIImage(named: "player_btn_pause_highlight"), for: UIControlState.highlighted)
+            
+        } else {
+            self.playOrPauseButton.setBackgroundImage(UIImage(named: "player_btn_play_normal"), for: UIControlState.normal)
+            self.playOrPauseButton.setBackgroundImage(UIImage(named: "player_btn_play_highlight"), for: UIControlState.highlighted)
+
+        }
+    }
+    
+    func updatePlayModeButton() {
+        switch self.playerManager.playingSortType! {
+            
+        case MBPlayingSortType.Sequence:
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_repeat_normal"), for: UIControlState.normal)
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_repeat_highlight"), for: UIControlState.highlighted)
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_repeat_disable"), for: UIControlState.disabled)
+            
+        case MBPlayingSortType.SingleLoop:
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_repeatone_normal"), for: UIControlState.normal)
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_repeatone_highlight"), for: UIControlState.highlighted)
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_repeatone_disable"), for: UIControlState.disabled)
+            
+        case MBPlayingSortType.Random:
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_random_normal"), for: UIControlState.normal)
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_random_highlight"), for: UIControlState.highlighted)
+            self.playModeButton.setBackgroundImage(UIImage(named: "player_btn_random_disable"), for: UIControlState.disabled)
+            
+        }
     }
 
     func setupMenuView() {
@@ -88,18 +139,62 @@ class MBPlayerControlPadView: UIView {
     @IBAction func clickPlayControlButtonAction(_ sender: UIButton) {
         
         if sender == self.preButton {
-            self.playerAlbumCoverView?.albumCoverImageView.RemoveAnimation()
-            self.playerAlbumCoverView?.albumCoverImageView.initAnimationWithSpeed(0.1)
-            self.playerAlbumCoverView?.albumCoverImageView.startAnimation()
+            
+            self.playerManager.playPrevious()
+            
         } else if sender == self.playOrPauseButton {
-            self.playerAlbumCoverView?.albumCoverImageView.pauseAnimation()
+            
+            if self.playerManager.isPlaying == true {
+                self.playerManager.pausePlay()
+            } else {
+                self.playerManager.startPlay()
+            }
             
         } else if sender == self.nextButton {
-            self.playerAlbumCoverView?.albumCoverImageView.RemoveAnimation()
-            self.playerAlbumCoverView?.albumCoverImageView.initAnimationWithSpeed(0.2)
-            self.playerAlbumCoverView?.albumCoverImageView.startAnimation()
+            
+            self.playerManager.playNext()
+            
         }
         
     }
     
+    @IBAction func clickPlayModeButtonAction(_ sender: UIButton) {
+        playerManager.switchToNextPlayingSortType { (playingSortType) in
+            self.updatePlayModeButton()
+        }
+    }
+    
+    func observePlayerManagerStatus(_ notification: Notification) {
+        switch self.playerManager.playerManagerStatus {
+        case .playing:
+            print("self.playerManager.playerManagerStatus = playing")
+            self.updatePlayOrPauseButton()
+            self.playerAlbumCoverView?.startAnimation()
+            
+        case .paused:
+            print("self.playerManager.playerManagerStatus = paused")
+            self.updatePlayOrPauseButton()
+            self.playerAlbumCoverView?.pauseAnimation()
+            
+        case .stopped:
+            print("self.playerManager.playerManagerStatus = stopped")
+            
+        case .loadSongModel:
+            print("self.playerManager.playerManagerStatus = loadSongModel")
+            
+        case .unknown:
+            print("self.playerManager.playerManagerStatus = unknown")
+            
+        case .readyToPlay:
+            print("self.playerManager.playerManagerStatus = readyToPlay")
+            self.playerAlbumCoverView?.RemoveAnimation()
+            self.playerAlbumCoverView?.initAnimationWithSpeed(0.1)
+            
+        case .failed:
+            print("self.playerManager.playerManagerStatus = failed")
+            
+        case .none:
+            print("self.playerManager.playerManagerStatus = none")
+        }
+    }
 }

@@ -17,6 +17,18 @@ enum MBPlayingSortType {
     
 }
 
+//播放状态枚举值
+enum MBPlayerManagerStatus {
+    case none
+    case failed
+    case readyToPlay
+    case unknown
+    case loadSongModel
+    case playing
+    case paused
+    case stopped
+}
+
 class MBPlayerManager: NSObject {
     
     private static var playerManager: MBPlayerManager?
@@ -30,6 +42,8 @@ class MBPlayerManager: NSObject {
     }
     
     deinit {
+        print("===============MBPlayerManager deinit===================")
+        self.removeObserverFromPlayer()
         self.removeObserverFromPlayerCurrentItem()
     }
     
@@ -38,6 +52,15 @@ class MBPlayerManager: NSObject {
     
     //播放器
     var player: AVPlayer?
+    
+    //播放器播放状态
+    var playerManagerStatus: MBPlayerManagerStatus = .none
+    
+    //是否正在播放
+    var isPlaying: Bool?
+    
+    //是否立即播放
+    var startToPlayAfterLoadingSongModel: Bool?
     
     //歌曲列表
     var songInfoList: [MBSongInfoModel]?
@@ -49,7 +72,7 @@ class MBPlayerManager: NSObject {
     var currentSongInfoModelIndex: Int?
     
     //歌曲播放模式
-    var playingSortType: MBPlayingSortType?
+    var playingSortType: MBPlayingSortType? = .Sequence
     
     //当前播放时间(秒)
     public var playTime: CGFloat = 0.0
@@ -65,12 +88,24 @@ class MBPlayerManager: NSObject {
     
     //开始播放
     func startPlay() {
+        
         self.player?.play()
     }
     
     //暂停播放
     func pausePlay() {
+        
         self.player?.pause()
+    }
+    
+    //播放完毕
+    func endPlay() {
+        guard (self.player != nil) else { return }
+        
+        self.playerManagerStatus = .stopped
+        NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+        
+        self.removeObserverFromPlayerCurrentItem()
     }
     
     //自然播放下一首
@@ -97,7 +132,6 @@ class MBPlayerManager: NSObject {
         }
         
         self.loadSongModel()
-        self.startPlay()
     }
     
     //播放上一首
@@ -124,7 +158,6 @@ class MBPlayerManager: NSObject {
         }
         
         self.loadSongModel()
-        self.startPlay()
     }
     
     //根据索引去播放一首歌曲
@@ -136,10 +169,9 @@ class MBPlayerManager: NSObject {
         }
         
         self.loadSongModel()
-        self.startPlay()
     }
     
-    func loadSongModel() {
+    func loadSongModel(startToPlay: Bool = true) {
         
         self.currentSongInfoModel = self.songInfoList![self.currentSongInfoModelIndex!]
         
@@ -155,13 +187,18 @@ class MBPlayerManager: NSObject {
                 
                 if self.player == nil {
                     self.player = AVPlayer(playerItem: playerItem)
+                    self.player?.volume = 1
+                    self.addObserverToPlayer()
                 } else {
                     self.player?.replaceCurrentItem(with: playerItem)
                 }
                 
-                self.player?.volume = 1
-                
                 self.addObserverToPlayerCurrentItem()
+                
+                self.playerManagerStatus = .loadSongModel
+                NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+                
+                self.startToPlayAfterLoadingSongModel = startToPlay
                 
             } else {
                 
@@ -170,32 +207,53 @@ class MBPlayerManager: NSObject {
         }
     }
     
+    //给AVPlayer添加监控
+    func addObserverToPlayer() {
+        guard let player = self.player else { return }
+        
+        player.addObserver(self, forKeyPath: "rate", options: [.new, .old], context: nil)
+        player.addObserver(self, forKeyPath: "currentItem", options: [.new, .old], context: nil)
+    }
+    
+    //从AVPlayer移除监控
+    func removeObserverFromPlayer() {
+        guard let player = self.player else { return }
+        
+        player.removeObserver(self, forKeyPath: "rate")
+        
+        player.removeObserver(self, forKeyPath: "currentItem")
+    }
+    
     //给AVPlayerItem、AVPlayer添加监控
     func addObserverToPlayerCurrentItem() {
+        
+        guard let currentItem = self.player?.currentItem else { return }
+        
         //监控状态属性，注意AVPlayer也有一个status属性，通过监控它的status也可以获得播放状态
-        self.player?.currentItem?.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+        currentItem.addObserver(self, forKeyPath: "status", options: [.new, .old], context: nil)
         
         //监控缓冲加载情况属性
-        self.player?.currentItem?.addObserver(self, forKeyPath: "loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
+        currentItem.addObserver(self, forKeyPath: "loadedTimeRanges", options: [.new, .old], context: nil)
         
         //监控播放完成通知
-        NotificationCenter.default.addObserver(self, selector: #selector(self.playItemDidPlayToEndTimeAction(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.player?.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.playItemDidPlayToEndTimeAction(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: currentItem)
         
+        //监控时间进度
         self.timeObserver = self.player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: DispatchQueue.main, using: { [weak self] (time) in
             
             self?.playTime = CGFloat(CMTimeGetSeconds(time))
             self?.playDuration = CGFloat(CMTimeGetSeconds(self!.player!.currentItem!.duration))
-            
-            
             
         })
     }
     
     //从AVPlayerItem、AVPlayer移除监控
     func removeObserverFromPlayerCurrentItem() {
-        self.player?.currentItem?.removeObserver(self, forKeyPath: "status")
+        guard let currentItem = self.player?.currentItem else { return }
         
-        self.player?.currentItem?.removeObserver(self, forKeyPath: "loadedTimeRanges")
+        currentItem.removeObserver(self, forKeyPath: "status")
+        
+        currentItem.removeObserver(self, forKeyPath: "loadedTimeRanges")
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         
@@ -222,28 +280,57 @@ class MBPlayerManager: NSObject {
      */
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        let playerItem = object as! AVPlayerItem
-        
         if keyPath == "status" {
-            switch self.player!.status {
-            case AVPlayerStatus.unknown:
-                print("KVO：未知状态，此时不能播放")
+            
+            let playerItem = object as! AVPlayerItem
+            
+            switch playerItem.status {
                 
-            case AVPlayerStatus.readyToPlay:
-                print("KVO：准备完毕，可以播放")
+                case AVPlayerItemStatus.unknown:
+                    print("KVO：未知状态，此时不能播放")
+                    self.playerManagerStatus = .unknown
+                    NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
                 
-                self.startPlay()
+                case AVPlayerItemStatus.readyToPlay:
+                    print("KVO：准备完毕，可以播放")
+                    self.playerManagerStatus = .readyToPlay
+                    NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+                    
+                    if self.startToPlayAfterLoadingSongModel == true {
+                        self.startPlay()
+                    }
                 
-            case AVPlayerStatus.failed:
-                print("KVO：加载失败，网络或者服务器出现问题")
+                case AVPlayerItemStatus.failed:
+                    print("KVO：加载失败，网络或者服务器出现问题")
+                    self.playerManagerStatus = .failed
+                    NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
             }
+            
         } else if keyPath == "loadedTimeRanges" {
             
+        } else if keyPath == "rate" {
+            print("KVO：Rate")
+            
+            let rate = change![.newKey] as! Float
+            
+            if rate == 0 {
+                self.isPlaying = false
+                self.playerManagerStatus = .paused
+                NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+                
+            } else {
+                self.isPlaying = true
+                self.playerManagerStatus = .playing
+                NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+            }
+            
+        } else if keyPath == "currentItem" {
+            print("KVO：CurrentItem")
         }
     }
     
     //切换歌曲播放模式
-    func switchToNextPlayingSortType() {
+    func switchToNextPlayingSortType(completionHandler: ((MBPlayingSortType) -> Void)? = nil ) {
         switch self.playingSortType! {
             
             case MBPlayingSortType.Sequence:
@@ -255,6 +342,10 @@ class MBPlayerManager: NSObject {
             case MBPlayingSortType.Random:
                 self.playingSortType = MBPlayingSortType.Sequence
         
+        }
+        
+        if completionHandler != nil {
+            completionHandler!(self.playingSortType!)
         }
     }
     

@@ -14,9 +14,9 @@ extension UIImageView {
     func initAnimationWithSpeed(_ speed: Float) {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z") //让其在z轴旋转
         rotationAnimation.toValue = NSNumber(value: Float.pi * speed) //旋转角度
-        rotationAnimation.duration = 0.2 //旋转周期
+        rotationAnimation.duration = 1.0 //旋转周期
         rotationAnimation.isCumulative = true //旋转累加角度
-        rotationAnimation.repeatCount = Float.greatestFiniteMagnitude //旋转次数
+        rotationAnimation.repeatCount = HUGE //旋转次数
         
         self.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
@@ -24,7 +24,7 @@ extension UIImageView {
     //启动动画
     func startAnimation() {
         let pauseTime = self.layer.timeOffset
-        self.layer.speed = 0.1
+        self.layer.speed = 1.0
         self.layer.timeOffset = 0.0
         self.layer.beginTime = 0.0
         let timeSincePause = self.layer.convertTime(CACurrentMediaTime(), from: nil) - pauseTime
@@ -41,7 +41,7 @@ extension UIImageView {
     
     //移除动画
     func RemoveAnimation() {
-        self.layer.removeAllAnimations()
+        self.layer.removeAnimation(forKey: "rotationAnimation")
     }
     
 }

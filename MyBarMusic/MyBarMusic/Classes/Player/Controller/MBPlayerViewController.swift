@@ -12,7 +12,7 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
     
     var scrollView: UIScrollView?
     
-    var playerControlPadView: MBPlayerControlPadView? = MBPlayerControlPadView.playerControlPadView
+    lazy var playerControlPadView: MBPlayerControlPadView! = MBPlayerControlPadView.playerControlPadView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         imageView.frame = self.view.bounds
         self.view.addSubview(imageView)
         
-        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.regular))
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
         effectView.frame = self.view.bounds
         self.view.addSubview(effectView)
         
@@ -121,9 +121,6 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setupPlayerControlPadView() {
-        if self.playerControlPadView == nil {
-            self.playerControlPadView = MBPlayerControlPadView.playerControlPadView
-        }
         
         self.playerControlPadView!.backgroundColor = UIColor.clear
         

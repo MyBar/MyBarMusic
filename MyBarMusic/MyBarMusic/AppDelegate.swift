@@ -49,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //监听网络变化
         MBNetworkReachabilityStatusListener.shared.startNetworkReachabilityStatusListening()
         
+        //设置全局控制器状态栏样式
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         return true
     }
 

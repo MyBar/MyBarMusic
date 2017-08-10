@@ -145,7 +145,6 @@ extension MBSongListViewController: UITableViewDelegate {
             playerManager.loadSongModel()
         }
         
-        playerManager.startPlay()
         
         let playerViewController = MBPlayerViewController()
         let navViewController = UINavigationController(rootViewController: playerViewController)
