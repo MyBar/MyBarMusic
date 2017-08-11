@@ -15,6 +15,9 @@ class MBPlayerAlbumCoverView: UIView {
     @IBOutlet weak var lyricLabel: UILabel!
     @IBOutlet weak var playerEffectView: UIView!
     
+    var isAddAnimation = false
+    
+    
     class var playerAlbumCoverView: MBPlayerAlbumCoverView {
         
         let playerAlbumCoverView = Bundle.main.loadNibNamed("MBPlayerAlbumCoverView", owner: nil, options: nil)?.last as? MBPlayerAlbumCoverView
@@ -53,6 +56,7 @@ class MBPlayerAlbumCoverView: UIView {
     //初始化动画
     func initAnimationWithSpeed(_ speed: Float) {
         self.albumCoverImageView.initAnimationWithSpeed(speed)
+        self.isAddAnimation = true
     }
     
     //启动动画
@@ -69,6 +73,7 @@ class MBPlayerAlbumCoverView: UIView {
     //移除动画
     func RemoveAnimation() {
         self.albumCoverImageView.RemoveAnimation()
+        self.isAddAnimation = false
     }
 
 }

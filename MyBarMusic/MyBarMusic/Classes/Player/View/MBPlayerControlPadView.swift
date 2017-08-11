@@ -24,8 +24,6 @@ class MBPlayerControlPadView: UIView {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     
-    var playerAlbumCoverView: MBPlayerAlbumCoverView?
-    
     lazy var playerManager: MBPlayerManager = AppDelegate.delegate.playerManager
     
     class var playerControlPadView: MBPlayerControlPadView {
@@ -51,8 +49,6 @@ class MBPlayerControlPadView: UIView {
         print("===============playerControlPadView deinit===================")
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
-        
-        self.playerAlbumCoverView?.RemoveAnimation()
     }
     
     func setupPageControl() {
@@ -146,7 +142,7 @@ class MBPlayerControlPadView: UIView {
             
             if self.playerManager.isPlaying == true {
                 self.playerManager.pausePlay()
-            } else {
+            } else if self.playerManager.isPlaying == false {
                 self.playerManager.startPlay()
             }
             
@@ -169,12 +165,10 @@ class MBPlayerControlPadView: UIView {
         case .playing:
             print("self.playerManager.playerManagerStatus = playing")
             self.updatePlayOrPauseButton()
-            self.playerAlbumCoverView?.startAnimation()
             
         case .paused:
             print("self.playerManager.playerManagerStatus = paused")
             self.updatePlayOrPauseButton()
-            self.playerAlbumCoverView?.pauseAnimation()
             
         case .stopped:
             print("self.playerManager.playerManagerStatus = stopped")
@@ -187,8 +181,6 @@ class MBPlayerControlPadView: UIView {
             
         case .readyToPlay:
             print("self.playerManager.playerManagerStatus = readyToPlay")
-            self.playerAlbumCoverView?.RemoveAnimation()
-            self.playerAlbumCoverView?.initAnimationWithSpeed(0.1)
             
         case .failed:
             print("self.playerManager.playerManagerStatus = failed")

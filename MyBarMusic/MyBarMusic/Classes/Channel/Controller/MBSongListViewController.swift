@@ -128,21 +128,18 @@ extension MBSongListViewController: UITableViewDelegate {
         if (playerManager.songInfoList == nil) || (playerManager.songInfoList!.count != self.songInfoListModel!.song_list!.count ) {
             
             playerManager.songInfoList = self.songInfoListModel!.song_list!
-            playerManager.currentSongInfoModelIndex = indexPath.row
-            playerManager.loadSongModel()
+            playerManager.playWithIndex(indexPath.row)
             
         } else if (playerManager.songInfoList!.elementsEqual(self.songInfoListModel!.song_list!, by: { (songInfoModel1, songInfoModel2) -> Bool in
             return songInfoModel1.song_id! == songInfoModel2.song_id!
         })) {
             
             if playerManager.currentSongInfoModelIndex != indexPath.row {
-                playerManager.currentSongInfoModelIndex = indexPath.row
-                playerManager.loadSongModel()
+                playerManager.playWithIndex(indexPath.row)
             }
         } else {
             playerManager.songInfoList = self.songInfoListModel!.song_list!
-            playerManager.currentSongInfoModelIndex = indexPath.row
-            playerManager.loadSongModel()
+            playerManager.playWithIndex(indexPath.row)
         }
         
         

@@ -102,14 +102,22 @@ class MBPlayerManager: NSObject {
     func endPlay() {
         guard (self.player != nil) else { return }
         
+        self.pausePlay()
+        self.isPlaying = nil
+        
         self.playerManagerStatus = .stopped
         NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
         
+        self.removeObserverFromPlayer()
         self.removeObserverFromPlayerCurrentItem()
+        
+        self.player = nil
     }
     
     //自然播放下一首
     func playNext() {
+        
+        self.endPlay()
         
         switch self.playingSortType! {
             
@@ -137,6 +145,8 @@ class MBPlayerManager: NSObject {
     //播放上一首
     func playPrevious() {
         
+        self.endPlay()
+        
         switch self.playingSortType! {
             
             case MBPlayingSortType.SingleLoop:
@@ -162,6 +172,9 @@ class MBPlayerManager: NSObject {
     
     //根据索引去播放一首歌曲
     func playWithIndex(_ index: Int) {
+        
+        self.endPlay()
+        
         if (index >= self.songInfoList!.count) {
             self.currentSongInfoModelIndex = 0
         } else {

@@ -12,7 +12,11 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
     
     var scrollView: UIScrollView?
     
+    lazy var playerManager: MBPlayerManager = AppDelegate.delegate.playerManager
+    
     lazy var playerControlPadView: MBPlayerControlPadView! = MBPlayerControlPadView.playerControlPadView
+    
+    lazy var playerAlbumCoverView: MBPlayerAlbumCoverView! = MBPlayerAlbumCoverView.playerAlbumCoverView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,19 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         self.setupScrollView()
 
         self.setupPlayerControlPadView()
+        
+        //监听状态变化
+        NotificationCenter.default.addObserver(self, selector: #selector(self.observePlayerManagerStatus(_:)), name: NSNotification.Name("playerManagerStatus"), object: nil)
+        
+        NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+    }
+    
+    deinit {
+        print("===============MBPlayerViewController deinit===================")
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
+        
+        self.playerAlbumCoverView.RemoveAnimation()
     }
 
     func setupBlurEffectForBackgroudImage(imageNamed: String) {
@@ -93,14 +110,11 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
                 self.scrollView?.addSubview(imageView)
                 
             case 1:
-                let playerAlbumCoverView = MBPlayerAlbumCoverView.playerAlbumCoverView
-                playerAlbumCoverView.frame = CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height)
+                self.playerAlbumCoverView.frame = CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height)
                 
-                playerAlbumCoverView.setupAlbumCoverView()
+                self.playerAlbumCoverView.setupAlbumCoverView()
                 
-                self.scrollView?.addSubview(playerAlbumCoverView)
-                
-                self.playerControlPadView?.playerAlbumCoverView = playerAlbumCoverView
+                self.scrollView?.addSubview(self.playerAlbumCoverView)
                 
             case 2:
                 let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height))
@@ -126,6 +140,47 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         
         self.view.addSubview(self.playerControlPadView!)
         
+    }
+    
+    func observePlayerManagerStatus(_ notification: Notification) {
+        switch self.playerManager.playerManagerStatus {
+        case .playing:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = playing")
+            if self.playerAlbumCoverView.isAddAnimation == false {
+                self.playerAlbumCoverView.initAnimationWithSpeed(0.1)
+            }
+            self.playerAlbumCoverView.startAnimation()
+            
+        case .paused:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = paused")
+            self.playerAlbumCoverView.pauseAnimation()
+            
+        case .stopped:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = stopped")
+            if self.playerAlbumCoverView.isAddAnimation {
+                self.playerAlbumCoverView.RemoveAnimation()
+            }
+            
+        case .loadSongModel:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = loadSongModel")
+            
+        case .unknown:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = unknown")
+            
+        case .readyToPlay:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = readyToPlay")
+            if self.playerAlbumCoverView.isAddAnimation {
+                self.playerAlbumCoverView.RemoveAnimation()
+            } else {
+                self.playerAlbumCoverView.initAnimationWithSpeed(0.1)
+            }
+            
+        case .failed:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = failed")
+            
+        case .none:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = none")
+        }
     }
     
     func clickNavigationBarButtonItemAction(_ sender: UIButton) {
