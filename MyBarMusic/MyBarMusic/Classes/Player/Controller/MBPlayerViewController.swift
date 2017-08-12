@@ -18,6 +18,10 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
     
     lazy var playerAlbumCoverView: MBPlayerAlbumCoverView! = MBPlayerAlbumCoverView.playerAlbumCoverView
 
+    var timer: Timer? //界面刷新定时器
+    
+    var isAddTimer = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +37,8 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.observePlayerManagerStatus(_:)), name: NSNotification.Name("playerManagerStatus"), object: nil)
         
         NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+        
+        self.addTimer()
     }
     
     deinit {
@@ -41,6 +47,8 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
         
         self.playerAlbumCoverView.RemoveAnimation()
+        
+        self.removeTimer()
     }
 
     func setupBlurEffectForBackgroudImage(imageNamed: String) {
@@ -142,47 +150,6 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    func observePlayerManagerStatus(_ notification: Notification) {
-        switch self.playerManager.playerManagerStatus {
-        case .playing:
-            print("MBPlayerViewController.playerManager.playerManagerStatus = playing")
-            if self.playerAlbumCoverView.isAddAnimation == false {
-                self.playerAlbumCoverView.initAnimationWithSpeed(0.1)
-            }
-            self.playerAlbumCoverView.startAnimation()
-            
-        case .paused:
-            print("MBPlayerViewController.playerManager.playerManagerStatus = paused")
-            self.playerAlbumCoverView.pauseAnimation()
-            
-        case .stopped:
-            print("MBPlayerViewController.playerManager.playerManagerStatus = stopped")
-            if self.playerAlbumCoverView.isAddAnimation {
-                self.playerAlbumCoverView.RemoveAnimation()
-            }
-            
-        case .loadSongModel:
-            print("MBPlayerViewController.playerManager.playerManagerStatus = loadSongModel")
-            
-        case .unknown:
-            print("MBPlayerViewController.playerManager.playerManagerStatus = unknown")
-            
-        case .readyToPlay:
-            print("MBPlayerViewController.playerManager.playerManagerStatus = readyToPlay")
-            if self.playerAlbumCoverView.isAddAnimation {
-                self.playerAlbumCoverView.RemoveAnimation()
-            } else {
-                self.playerAlbumCoverView.initAnimationWithSpeed(0.1)
-            }
-            
-        case .failed:
-            print("MBPlayerViewController.playerManager.playerManagerStatus = failed")
-            
-        case .none:
-            print("MBPlayerViewController.playerManager.playerManagerStatus = none")
-        }
-    }
-    
     func clickNavigationBarButtonItemAction(_ sender: UIButton) {
         
         if sender == self.navigationItem.leftBarButtonItem?.customView {
@@ -201,4 +168,98 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         
         self.playerControlPadView?.updatePageControlCurrentPage(currentPage)
     }
+}
+
+extension MBPlayerViewController {
+    
+    func observePlayerManagerStatus(_ notification: Notification) {
+        switch self.playerManager.playerManagerStatus {
+        case .playing:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = playing")
+            if self.playerAlbumCoverView.isAddAnimation == false {
+                self.playerAlbumCoverView.initAnimationWithSpeed(0.1)
+            }
+            self.playerAlbumCoverView.startAnimation()
+            
+            if self.isAddTimer == false {
+                self.addTimer()
+            }
+            
+        case .paused:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = paused")
+            self.playerAlbumCoverView.pauseAnimation()
+            
+            self.removeTimer()
+            self.refreshUI()
+            
+        case .stopped:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = stopped")
+            if self.playerAlbumCoverView.isAddAnimation {
+                self.playerAlbumCoverView.RemoveAnimation()
+            }
+            
+            self.removeTimer()
+            self.refreshUI()
+            
+        case .loadSongModel:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = loadSongModel")
+            
+        case .unknown:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = unknown")
+            
+        case .readyToPlay:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = readyToPlay")
+            if self.playerAlbumCoverView.isAddAnimation {
+                self.playerAlbumCoverView.RemoveAnimation()
+            } else {
+                self.playerAlbumCoverView.initAnimationWithSpeed(0.1)
+                self.playerAlbumCoverView.pauseAnimation()
+            }
+            
+            if self.isAddTimer == false {
+                self.addTimer()
+            }
+            
+        case .failed:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = failed")
+            
+        case .none:
+            print("MBPlayerViewController.playerManager.playerManagerStatus = none")
+        }
+    }
+    
+    //#pragma mark - 定时器
+    func addTimer() {
+        guard self.timer == nil else {
+            return
+        }
+        
+        print("======== addTimer  - 定时器 =========")
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0 / 20.0, target: self, selector: #selector(self.refreshUI), userInfo: nil, repeats: true)
+        
+        RunLoop.main.add(self.timer!, forMode: RunLoopMode.commonModes)
+        
+        self.isAddTimer = true
+    }
+    
+    func removeTimer() {
+        guard self.timer != nil else {
+            return
+        }
+        
+        print("======== removeTimer  - 定时器 =========")
+        
+        self.timer?.invalidate()
+        self.timer = nil
+        
+        self.isAddTimer = false
+    }
+    
+    func refreshUI() {
+        self.navigationItem.title = self.playerManager.currentSongInfoModel?.title ?? "QQ音乐，听我想听的歌"
+        self.playerAlbumCoverView.singerLabel.text = self.playerManager.currentSongInfoModel?.artist_name ?? ""
+        self.playerControlPadView.refreshProgress()
+    }
+
 }

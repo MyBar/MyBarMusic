@@ -31,7 +31,9 @@ class MBPlayerAlbumCoverView: UIView {
     
     func setupAlbumCoverView() {
         
-        self.albumCoverImageView.image = UIImage(named: "LaunchImage")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        self.albumCoverImageView.image = UIImage(named: "player_albumcover_default")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+        
+        self.albumCoverImageView.backgroundColor = UIColor.black
         
         let margin: CGFloat = 8.0
         
@@ -51,6 +53,9 @@ class MBPlayerAlbumCoverView: UIView {
         
         self.albumCoverImageView.layer.cornerRadius = self.albumCoverImageView.frame.width / 2
         self.albumCoverImageView.layer.masksToBounds = true
+        
+        self.albumCoverImageView.layer.borderWidth = 8
+        self.albumCoverImageView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     //初始化动画

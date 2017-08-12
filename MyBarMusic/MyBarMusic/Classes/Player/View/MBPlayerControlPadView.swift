@@ -49,6 +49,7 @@ class MBPlayerControlPadView: UIView {
         print("===============playerControlPadView deinit===================")
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
+        
     }
     
     func setupPageControl() {
@@ -144,6 +145,8 @@ class MBPlayerControlPadView: UIView {
                 self.playerManager.pausePlay()
             } else if self.playerManager.isPlaying == false {
                 self.playerManager.startPlay()
+            } else if self.playerManager.playerManagerStatus == .readyToPlay {
+                self.playerManager.startPlay()
             }
             
         } else if sender == self.nextButton {
@@ -159,6 +162,10 @@ class MBPlayerControlPadView: UIView {
             self.updatePlayModeButton()
         }
     }
+    
+}
+
+extension MBPlayerControlPadView {
     
     func observePlayerManagerStatus(_ notification: Notification) {
         switch self.playerManager.playerManagerStatus {
@@ -188,5 +195,26 @@ class MBPlayerControlPadView: UIView {
         case .none:
             print("self.playerManager.playerManagerStatus = none")
         }
+    }
+    
+    func refreshProgress() {
+        //显示时间
+        self.currentTimeLabel.text = self.convertTime(seconds: self.playerManager.playTime)
+        self.totalTimeLabel.text = self.convertTime(seconds: self.playerManager.playDuration)
+        
+        //进度条
+        self.timeProgressSlider.value = self.playerManager.progress
+    }
+    
+    //convert Time(seconds: Float) to String(00:00)
+    func convertTime(seconds: Float) -> String {
+        let min = Int(seconds / 60.0)
+        let sec = Int(seconds) - min * 60
+        
+        let minStr = min > 9 ? "\(min)" : "0\(min)"
+        let secStr = sec > 9 ? "\(sec)" : "0\(sec)"
+        
+        return "\(minStr):\(secStr)"
+        
     }
 }

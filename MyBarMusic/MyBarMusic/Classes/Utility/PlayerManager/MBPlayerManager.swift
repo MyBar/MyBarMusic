@@ -75,16 +75,14 @@ class MBPlayerManager: NSObject {
     var playingSortType: MBPlayingSortType? = .Sequence
     
     //当前播放时间(秒)
-    public var playTime: CGFloat = 0.0
+    lazy var playTime: Float = 0.0
     
     //总时长(秒)
-    public var playDuration: CGFloat = 0.0 {
-        didSet {
-            if playDuration != oldValue {
-                
-            }
-        }
-    }
+    lazy var playDuration: Float = 0.0
+    
+    //播放进度(%)
+    lazy var progress: Float = 0.0
+    
     
     //开始播放
     func startPlay() {
@@ -102,6 +100,11 @@ class MBPlayerManager: NSObject {
     func endPlay() {
         guard (self.player != nil) else { return }
         
+        //重置进度
+        self.playTime = 0
+        self.playDuration = 0
+        self.progress = 0
+        
         self.pausePlay()
         self.isPlaying = nil
         
@@ -112,6 +115,7 @@ class MBPlayerManager: NSObject {
         self.removeObserverFromPlayerCurrentItem()
         
         self.player = nil
+        
     }
     
     //自然播放下一首
@@ -139,7 +143,7 @@ class MBPlayerManager: NSObject {
                 }
         }
         
-        self.loadSongModel()
+        self.loadSongModel(startToPlay: true)
     }
     
     //播放上一首
@@ -167,7 +171,7 @@ class MBPlayerManager: NSObject {
                 }
         }
         
-        self.loadSongModel()
+        self.loadSongModel(startToPlay: true)
     }
     
     //根据索引去播放一首歌曲
@@ -181,12 +185,16 @@ class MBPlayerManager: NSObject {
             self.currentSongInfoModelIndex = index
         }
         
-        self.loadSongModel()
+        self.loadSongModel(startToPlay: true)
     }
     
-    func loadSongModel(startToPlay: Bool = true) {
+    func loadSongModel(startToPlay: Bool = false) {
         
         self.currentSongInfoModel = self.songInfoList![self.currentSongInfoModelIndex!]
+        
+        if let file_duration = self.currentSongInfoModel?.file_duration {
+            self.playDuration = Float(file_duration)!
+        }
         
         MBNetworkManager.fetchSong(songID: self.currentSongInfoModel!.song_id!) { (isSuccess, songModel) in
             
@@ -254,8 +262,9 @@ class MBPlayerManager: NSObject {
         //监控时间进度
         self.timeObserver = self.player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 1), queue: DispatchQueue.main, using: { [weak self] (time) in
             
-            self?.playTime = CGFloat(CMTimeGetSeconds(time))
-            self?.playDuration = CGFloat(CMTimeGetSeconds(self!.player!.currentItem!.duration))
+            self?.playTime = Float(CMTimeGetSeconds(time))
+            self?.playDuration = Float(CMTimeGetSeconds(currentItem.duration))
+            self?.progress = (self?.playTime)! / (self?.playDuration)!
             
         })
     }
@@ -320,6 +329,7 @@ class MBPlayerManager: NSObject {
             }
             
         } else if keyPath == "loadedTimeRanges" {
+            print("KVO：loadedTimeRanges")
             
         } else if keyPath == "rate" {
             print("KVO：Rate")
