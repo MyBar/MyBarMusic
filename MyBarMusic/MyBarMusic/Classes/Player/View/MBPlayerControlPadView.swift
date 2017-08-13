@@ -26,6 +26,8 @@ class MBPlayerControlPadView: UIView {
     
     lazy var playerManager: MBPlayerManager = AppDelegate.delegate.playerManager
     
+    lazy var isRefreshProgress: Bool = true
+    
     class var playerControlPadView: MBPlayerControlPadView {
         
         let playerControlPadView = Bundle.main.loadNibNamed("MBPlayerControlPadView", owner: nil, options: nil)?.last as? MBPlayerControlPadView
@@ -69,6 +71,47 @@ class MBPlayerControlPadView: UIView {
         self.timeProgressSlider.minimumTrackTintColor = UIColor(patternImage: UIImage(named: "player_slider_playback_left")!)
         // 未走过的进度条的颜色
         self.timeProgressSlider.maximumTrackTintColor = UIColor(patternImage: UIImage(named: "player_slider_playback_right")!)
+        
+        self.timeProgressSlider.addTarget(self, action: #selector(self.timeProgressSliderValueChanged(_:)), for: UIControlEvents.valueChanged)
+        self.timeProgressSlider.isContinuous = true
+        
+        self.timeProgressSlider.addTarget(self, action: #selector(self.touchTimeProgressSliderAction(_:)), for: UIControlEvents.touchUpInside)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapTimeProgressSliderAction(_:)))
+        self.timeProgressSlider.addGestureRecognizer(tapGesture)
+    }
+    
+    func timeProgressSliderValueChanged(_ sender: UISlider) {
+        guard (self.playerManager.playerManagerStatus == .readyToPlay || self.playerManager.playerManagerStatus == .paused || self.playerManager.playerManagerStatus == .playing) else {
+            return
+        }
+        
+        self.isRefreshProgress = false
+        
+        //显示时间
+        self.currentTimeLabel.text = self.convertTime(seconds: sender.value * self.playerManager.playDuration)
+    }
+    
+    func touchTimeProgressSliderAction(_ sender: UISlider) {
+        guard (self.playerManager.playerManagerStatus == .readyToPlay || self.playerManager.playerManagerStatus == .paused || self.playerManager.playerManagerStatus == .playing) else {
+            return
+        }
+        
+        self.playerManager.seekToProgress(sender.value)
+        
+        self.playerManager.progress = sender.value
+        self.isRefreshProgress = true
+    }
+    
+    func tapTimeProgressSliderAction(_ gesture: UITapGestureRecognizer) {
+        guard (self.playerManager.playerManagerStatus == .readyToPlay || self.playerManager.playerManagerStatus == .paused || self.playerManager.playerManagerStatus == .playing) else {
+            return
+        }
+        
+        let point = gesture.location(in: self.timeProgressSlider)
+        let progress = Float(point.x / self.timeProgressSlider.frame.width)
+        
+        self.playerManager.seekToProgress(progress)
     }
     
     func setupPlayControlView() {
@@ -198,6 +241,10 @@ extension MBPlayerControlPadView {
     }
     
     func refreshProgress() {
+        guard self.isRefreshProgress else {
+            return
+        }
+        
         //显示时间
         self.currentTimeLabel.text = self.convertTime(seconds: self.playerManager.playTime)
         self.totalTimeLabel.text = self.convertTime(seconds: self.playerManager.playDuration)

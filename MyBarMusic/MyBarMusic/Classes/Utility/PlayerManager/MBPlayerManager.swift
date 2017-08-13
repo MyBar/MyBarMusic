@@ -372,4 +372,17 @@ class MBPlayerManager: NSObject {
         }
     }
     
+    //从一个特定时间进度播放，progress: 0 to 1
+    func seekToProgress(_ progress: Float) {
+        guard self.player != nil else {
+            return
+        }
+        
+        let time = CMTime(value: CMTimeValue(progress * self.playDuration), timescale: 1)
+        
+        self.player!.seek(to: time, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero) { (finished) in
+            self.startPlay()
+        }
+    }
+    
 }
