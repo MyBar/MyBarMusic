@@ -58,6 +58,11 @@ class MBPlayerAlbumCoverView: UIView {
         self.albumCoverImageView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
+    func updateAlbumCoverView(with: UIImage?) {
+        
+        self.albumCoverImageView.image = (with ?? UIImage(named: "player_albumcover_default"))?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
+    }
+    
     //初始化动画
     func initAnimationWithSpeed(_ speed: Float) {
         self.albumCoverImageView.initAnimationWithSpeed(speed)
@@ -67,7 +72,6 @@ class MBPlayerAlbumCoverView: UIView {
     //启动动画
     func startAnimation() {
         self.albumCoverImageView.startAnimation()
-        
     }
     
     //暂停动画

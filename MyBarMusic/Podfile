@@ -16,4 +16,6 @@ target ‘MyBarMusic' do
 
     pod 'Alamofire', '~> 4.4'
 
+    pod 'Kingfisher', '~> 3.10.4'
+
 end

@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
     
     var scrollView: UIScrollView?
+    
+    var backgroudImageView: UIImageView?
     
     lazy var playerManager: MBPlayerManager = AppDelegate.delegate.playerManager
     
@@ -25,7 +28,7 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupBlurEffectForBackgroudImage(imageNamed: "player_albumblur_default")
+        self.setupBlurEffectForBackgroudImage()
         
         self.setupNavigation()
         
@@ -41,6 +44,21 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         self.addTimer()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let urlStr = self.playerManager.currentSongInfoModel?.pic_big {
+            
+            self.backgroudImageView?.kf.setImage(with: URL(string: urlStr), placeholder: UIImage(named: "player_albumblur_default"), options: [.transition(.fade(1))], progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
+                
+                self.playerAlbumCoverView.updateAlbumCoverView(with: image)
+            })
+            
+        } else {
+            self.backgroudImageView?.image = UIImage(named: "player_albumblur_default")
+        }
+    }
+    
     deinit {
         print("===============MBPlayerViewController deinit===================")
         
@@ -51,15 +69,14 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         self.removeTimer()
     }
 
-    func setupBlurEffectForBackgroudImage(imageNamed: String) {
-        let imageView = UIImageView(image: UIImage(named: imageNamed))
-        imageView.frame = self.view.bounds
-        self.view.addSubview(imageView)
+    func setupBlurEffectForBackgroudImage() {
+        self.backgroudImageView = UIImageView()
+        self.backgroudImageView!.frame = self.view.bounds
+        self.view.addSubview(self.backgroudImageView!)
         
-        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
-        effectView.frame = self.view.bounds
-        self.view.addSubview(effectView)
-        
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+        effectView.frame = self.backgroudImageView!.bounds
+        self.backgroudImageView!.addSubview(effectView)
     }
     
     func setupNavigation() {
@@ -204,6 +221,18 @@ extension MBPlayerViewController {
         case .loadSongModel:
             print("MBPlayerViewController.playerManager.playerManagerStatus = loadSongModel")
             
+            self.playerAlbumCoverView.updateAlbumCoverView(with: nil)
+            if let urlStr = self.playerManager.currentSongInfoModel?.pic_big {
+                
+                self.backgroudImageView?.kf.setImage(with: URL(string: urlStr), placeholder: UIImage(named: "player_albumblur_default"), options: [.transition(.fade(1))], progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
+                    
+                    self.playerAlbumCoverView.updateAlbumCoverView(with: image)
+                })
+                
+            } else {
+                self.backgroudImageView?.image = UIImage(named: "player_albumblur_default")
+            }
+            
         case .unknown:
             print("MBPlayerViewController.playerManager.playerManagerStatus = unknown")
             
@@ -258,7 +287,13 @@ extension MBPlayerViewController {
     
     func refreshUI() {
         self.navigationItem.title = self.playerManager.currentSongInfoModel?.title ?? "QQ音乐，听我想听的歌"
-        self.playerAlbumCoverView.singerLabel.text = self.playerManager.currentSongInfoModel?.artist_name ?? ""
+        
+        if let artistName = self.playerManager.currentSongInfoModel?.artist_name {
+            self.playerAlbumCoverView.singerLabel.text = "一   \(artistName)   一"
+        } else {
+            self.playerAlbumCoverView.singerLabel.text = nil
+        }
+        
         self.playerControlPadView.refreshProgress()
     }
 

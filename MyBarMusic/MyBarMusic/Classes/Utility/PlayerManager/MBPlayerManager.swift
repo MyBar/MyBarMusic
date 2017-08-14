@@ -216,9 +216,6 @@ class MBPlayerManager: NSObject {
                 
                 self.addObserverToPlayerCurrentItem()
                 
-                self.playerManagerStatus = .loadSongModel
-                NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
-                
                 self.startToPlayAfterLoadingSongModel = startToPlay
                 
             } else {
@@ -226,6 +223,10 @@ class MBPlayerManager: NSObject {
             }
 
         }
+        
+        self.playerManagerStatus = .loadSongModel
+        NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+
     }
     
     //给AVPlayer添加监控
