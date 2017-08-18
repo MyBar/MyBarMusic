@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -37,6 +37,9 @@
                         <constraint firstAttribute="height" constant="40" id="fhY-vz-beM"/>
                     </constraints>
                     <state key="normal" image="miniplayer_btn_play_normal" backgroundImage="channel_song_list_play_btn"/>
+                    <connections>
+                        <action selector="clickPlayOrPauseButtonAction:" destination="KgD-VT-GLa" eventType="touchUpInside" id="LG2-VJ-xGW"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ音乐，听我想听的歌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tgh-f1-nyB" userLabel="None Playlist Label">
                     <rect key="frame" x="16" y="1" width="353" height="56"/>

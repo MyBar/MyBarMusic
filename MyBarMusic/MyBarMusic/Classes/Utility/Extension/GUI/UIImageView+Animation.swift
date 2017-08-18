@@ -17,7 +17,9 @@ extension UIImageView {
         rotationAnimation.duration = 1.0 //旋转周期
         rotationAnimation.isCumulative = true //旋转累加角度
         rotationAnimation.repeatCount = HUGE //旋转次数
+        rotationAnimation.isRemovedOnCompletion = false
         
+        self.layer.speed = 0.0
         self.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
     

@@ -29,6 +29,13 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         self.miniPlayerView = self.setupMiniPlayerView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //放在这里是因为多个页面要共享同一个miniPlayerView，但是相同的miniPlayerView在同一时间只能加在某一个页面，即在这个页面添加了，那会从另一个页面中会移除
+        self.miniPlayerView = self.setupMiniPlayerView()
+    }
+    
     func setupScrollView() {
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -151,12 +158,9 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
             
             self.slideMenuController()?.toggleLeft()
             
-            self.miniPlayerView?.isEnable = true
-            
         } else if sender == self.navigationItem.rightBarButtonItem?.customView {
             print("rightBarButtonItem")
             
-            self.miniPlayerView?.isEnable = false
         }
     }
     
@@ -183,7 +187,4 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.miniPlayerView = self.setupMiniPlayerView()
-    }
 }

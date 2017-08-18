@@ -16,6 +16,8 @@ class MBMiniPlayerAlbumCoverView: UIView {
 
     @IBOutlet weak var lyricLabel: UILabel!
     
+    var isAddAnimation = false
+    
     class var miniPlayerAlbumCoverView: MBMiniPlayerAlbumCoverView {
         
         let miniPlayerAlbumCoverView = Bundle.main.loadNibNamed("MBMiniPlayerAlbumCoverView", owner: nil, options: nil)?.last as? MBMiniPlayerAlbumCoverView
@@ -43,5 +45,27 @@ class MBMiniPlayerAlbumCoverView: UIView {
         
         rootVC?.present(navViewController, animated: true, completion: nil)
         
+    }
+    
+    //初始化动画
+    func initAnimationWithSpeed(_ speed: Float) {
+        self.albumImageView.initAnimationWithSpeed(speed)
+        self.isAddAnimation = true
+    }
+    
+    //启动动画
+    func startAnimation() {
+        self.albumImageView.startAnimation()
+    }
+    
+    //暂停动画
+    func pauseAnimation() {
+        self.albumImageView.pauseAnimation()
+    }
+    
+    //移除动画
+    func RemoveAnimation() {
+        self.albumImageView.RemoveAnimation()
+        self.isAddAnimation = false
     }
 }

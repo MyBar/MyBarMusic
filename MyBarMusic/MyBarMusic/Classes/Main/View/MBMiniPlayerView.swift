@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MBMiniPlayerView: UIView, UIScrollViewDelegate {
 
@@ -26,13 +27,17 @@ class MBMiniPlayerView: UIView, UIScrollViewDelegate {
     
     var nextMiniPlayerAlbumCoverView: MBMiniPlayerAlbumCoverView?
     
+    lazy var playerManager: MBPlayerManager = AppDelegate.delegate.playerManager
+    
     private static var miniPlayerView: MBMiniPlayerView?
     
     class var shared: MBMiniPlayerView {
         
-        if self.miniPlayerView == nil {
-            self.miniPlayerView = Bundle.main.loadNibNamed("MBMiniPlayerView", owner: nil, options: nil)?.last as? MBMiniPlayerView
+        guard self.miniPlayerView == nil else {
+            return self.miniPlayerView!
         }
+        
+        self.miniPlayerView = Bundle.main.loadNibNamed("MBMiniPlayerView", owner: nil, options: nil)?.last as? MBMiniPlayerView
         
         self.miniPlayerView?.backgroundColor = UIColor(patternImage: UIImage(named: "vc_bg")!)
         
@@ -45,35 +50,76 @@ class MBMiniPlayerView: UIView, UIScrollViewDelegate {
         self.miniPlayerView?.setupButtons()
         self.miniPlayerView?.setupScrollView()
         
-        self.miniPlayerView?.isEnable = false
+        //监听状态变化
+        NotificationCenter.default.addObserver(self.miniPlayerView!, selector: #selector(self.miniPlayerView!.observePlayerManagerStatus(_:)), name: NSNotification.Name("playerManagerStatus"), object: nil)
         
         return self.miniPlayerView!
     }
     
+    deinit {
+        print("===============miniPlayerView deinit===================")
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
+        
+        self.currentMiniPlayerAlbumCoverView?.RemoveAnimation()
+        
+    }
+
     var isEnable: Bool = false {
         didSet {
             self.nonePlaylistLabel.isHidden = isEnable
             self.scrollView.isHidden = !isEnable
             self.playOrPauseButton.isEnabled = isEnable
             self.playlistButton.isEnabled = isEnable
+            
+            if isEnable == false {
+                self.playerManager.endPlay()
+            }
         }
     }
     
     private func setupButtons() {
         
-        self.playOrPauseButton.setImage(UIImage(named: "miniplayer_btn_play_normal"), for: UIControlState.normal)
-        self.playOrPauseButton.setBackgroundImage(UIImage(named: "channel_song_list_play_btn"), for: UIControlState.normal)
-            
-        self.playOrPauseButton.setImage(UIImage(named: "miniplayer_btn_play_highlight"), for: UIControlState.highlighted)
-        self.playOrPauseButton.setBackgroundImage(UIImage(named: "channel_song_list_play_btn_h"), for: UIControlState.highlighted)
+        self.updatePlayOrPauseButton()
         
-        self.playOrPauseButton.setImage(UIImage(named: "miniplayer_btn_play_disable"), for: UIControlState.disabled)
-        self.playOrPauseButton.setBackgroundImage(UIImage(), for: UIControlState.disabled)
-            
         self.playlistButton.setImage(UIImage(named: "miniplayer_btn_playlist_normal"), for: UIControlState.normal)
         self.playlistButton.setImage(UIImage(named: "miniplayer_btn_playlist_highlight"), for: UIControlState.highlighted)
         self.playlistButton.setImage(UIImage(named: "miniplayer_btn_playlist_disable"), for: UIControlState.disabled)
         
+    }
+    
+    func updatePlayOrPauseButton() {
+        if self.isEnable {
+            if self.playerManager.isPlaying == true {
+                self.playOrPauseButton.setImage(UIImage(named: "miniplayer_btn_pause_normal"), for: UIControlState.normal)
+                self.playOrPauseButton.setBackgroundImage(UIImage(named: "channel_song_list_play_btn"), for: UIControlState.normal)
+                
+                self.playOrPauseButton.setImage(UIImage(named: "miniplayer_btn_pause_highlight"), for: UIControlState.highlighted)
+                self.playOrPauseButton.setBackgroundImage(UIImage(named: "channel_song_list_play_btn_h"), for: UIControlState.highlighted)
+                
+            } else {
+                self.playOrPauseButton.setImage(UIImage(named: "miniplayer_btn_play_normal"), for: UIControlState.normal)
+                self.playOrPauseButton.setBackgroundImage(UIImage(named: "channel_song_list_play_btn"), for: UIControlState.normal)
+                
+                self.playOrPauseButton.setImage(UIImage(named: "miniplayer_btn_play_highlight"), for: UIControlState.highlighted)
+                self.playOrPauseButton.setBackgroundImage(UIImage(named: "channel_song_list_play_btn_h"), for: UIControlState.highlighted)
+            }
+        } else {
+            self.playOrPauseButton.setImage(UIImage(named: "miniplayer_btn_play_disable"), for: UIControlState.disabled)
+            self.playOrPauseButton.setBackgroundImage(UIImage(), for: UIControlState.disabled)
+        }
+    }
+    
+    @IBAction func clickPlayOrPauseButtonAction(_ sender: UIButton) {
+        if self.isEnable {
+            if self.playerManager.isPlaying == true {
+                self.playerManager.pausePlay()
+            } else if self.playerManager.isPlaying == false {
+                self.playerManager.startPlay()
+            } else if self.playerManager.playerManagerStatus == .readyToPlay {
+                self.playerManager.startPlay()
+            }
+        }
     }
     
     private func setupScrollView() {
@@ -113,47 +159,139 @@ class MBMiniPlayerView: UIView, UIScrollViewDelegate {
         //关于设置一个范围因为调试的时候发现contentOffset.x有时候不是0，self.scrollView.frame.width, self.scrollView.frame.width * CGFloat(2)
         if scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x <= 10 {
             
-            var x = preMiniPlayerAlbumCoverView!.frame.origin.x + scrollView.frame.width
-            if x >= scrollView.contentSize.width {
-                x = 0
+            for miniPlayerAlbumCoverView in self.scrollView.subviews {
+                miniPlayerAlbumCoverView.removeFromSuperview()
             }
-            preMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
             
-            x += scrollView.frame.width
-            if x >= scrollView.contentSize.width {
-                x = 0
-            }
-            currentMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+            self.setupScrollView()
             
-            x += scrollView.frame.width
-            if x >= scrollView.contentSize.width {
-                x = 0
-            }
-            nextMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+            self.playerManager.playPrevious()
         }
         
         if scrollView.contentOffset.x >= scrollView.frame.width * CGFloat(2) - 10 && scrollView.contentOffset.x <= scrollView.frame.width * CGFloat(2) + 10 {
             
-            var x = preMiniPlayerAlbumCoverView!.frame.origin.x - scrollView.frame.width
-            if x < 0 {
-                x = scrollView.frame.width * CGFloat(2)
+            for miniPlayerAlbumCoverView in self.scrollView.subviews {
+                miniPlayerAlbumCoverView.removeFromSuperview()
             }
-            preMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
             
-            x += scrollView.frame.width
-            if x >= scrollView.contentSize.width {
-                x = 0
-            }
-            currentMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+            self.setupScrollView()
             
-            x += scrollView.frame.width
-            if x >= scrollView.contentSize.width {
-                x = 0
+            self.playerManager.playNext()
+        }
+    }
+}
+
+extension MBMiniPlayerView {
+    
+    func observePlayerManagerStatus(_ notification: Notification) {
+        switch self.playerManager.playerManagerStatus {
+        case .playing:
+            print("MBMiniPlayerView.playerManager.playerManagerStatus = playing")
+            self.updatePlayOrPauseButton()
+            
+            if self.currentMiniPlayerAlbumCoverView!.isAddAnimation == false {
+                self.currentMiniPlayerAlbumCoverView!.initAnimationWithSpeed(0.1)
             }
-            nextMiniPlayerAlbumCoverView?.frame = CGRect(x: x, y: scrollView.frame.origin.y, width: scrollView.frame.width, height: scrollView.frame.height)
+            self.currentMiniPlayerAlbumCoverView!.startAnimation()
+            
+        case .paused:
+            print("MBMiniPlayerView.playerManager.playerManagerStatus = paused")
+            self.updatePlayOrPauseButton()
+            
+            self.currentMiniPlayerAlbumCoverView!.pauseAnimation()
+            
+        case .stopped:
+            print("MBMiniPlayerView.playerManager.playerManagerStatus = stopped")
+            if self.currentMiniPlayerAlbumCoverView!.isAddAnimation {
+                self.currentMiniPlayerAlbumCoverView!.RemoveAnimation()
+            }
+            
+        case .loadSongModel:
+            print("MBMiniPlayerView.playerManager.playerManagerStatus = loadSongModel")
+            self.updateContentOfScrollView()
+            
+        case .unknown:
+            print("MBMiniPlayerView.playerManager.playerManagerStatus = unknown")
+            
+        case .readyToPlay:
+            print("MBMiniPlayerView.playerManager.playerManagerStatus = readyToPlay")
+            if self.currentMiniPlayerAlbumCoverView!.isAddAnimation {
+                self.currentMiniPlayerAlbumCoverView!.RemoveAnimation()
+            } else {
+                self.currentMiniPlayerAlbumCoverView!.initAnimationWithSpeed(0.1)
+                self.currentMiniPlayerAlbumCoverView!.pauseAnimation()
+            }
+            
+        case .failed:
+            print("MBMiniPlayerView.playerManager.playerManagerStatus = failed")
+            
+        case .none:
+            print("MBMiniPlayerView.playerManager.playerManagerStatus = none")
+        }
+    }
+    
+    
+    func updateContentOfScrollView() {
+        var preSongInfoModelIndex = self.playerManager.currentSongInfoModelIndex! - 1
+        let currentSongInfoModelIndex = self.playerManager.currentSongInfoModelIndex!
+        var nextSongInfoModelIndex = self.playerManager.currentSongInfoModelIndex! + 1
+        
+        switch self.playerManager.playingSortType! {
+            
+        case MBPlayingSortType.SingleLoop:
+            fallthrough
+            
+        case MBPlayingSortType.Sequence:
+            if (preSongInfoModelIndex < 0) {
+                preSongInfoModelIndex = self.playerManager.songInfoList!.count - 1
+            }
+            
+            if (nextSongInfoModelIndex >= self.playerManager.songInfoList!.count) {
+                nextSongInfoModelIndex = 0
+            }
+            
+        case MBPlayingSortType.Random:
+            if (preSongInfoModelIndex < 0) {
+                preSongInfoModelIndex = self.playerManager.songInfoList!.count - 1
+            }
+            
+            if (nextSongInfoModelIndex >= self.playerManager.songInfoList!.count) {
+                nextSongInfoModelIndex = 0
+            }
+        }
+        
+        self.preMiniPlayerAlbumCoverView?.musicNameLabel.text = self.playerManager.songInfoList![preSongInfoModelIndex].title
+        self.currentMiniPlayerAlbumCoverView?.musicNameLabel.text = self.playerManager.songInfoList![currentSongInfoModelIndex].title
+        self.nextMiniPlayerAlbumCoverView?.musicNameLabel.text = self.playerManager.songInfoList![nextSongInfoModelIndex].title
+        
+        self.preMiniPlayerAlbumCoverView?.lyricLabel.text = self.playerManager.songInfoList![preSongInfoModelIndex].artist_name
+        self.currentMiniPlayerAlbumCoverView?.lyricLabel.text = self.playerManager.songInfoList![currentSongInfoModelIndex].artist_name
+        self.nextMiniPlayerAlbumCoverView?.lyricLabel.text = self.playerManager.songInfoList![nextSongInfoModelIndex].artist_name
+        
+        if let urlStr = self.playerManager.songInfoList?[preSongInfoModelIndex].pic_small {
+            
+            self.preMiniPlayerAlbumCoverView?.albumImageView.kf.setImage(with: URL(string: urlStr), placeholder: UIImage(named: "player_albumcover_minidefault"), options: nil, progressBlock: nil, completionHandler: nil)
+            
+        } else {
+            self.preMiniPlayerAlbumCoverView?.albumImageView.image = UIImage(named: "player_albumcover_minidefault")
+        }
+        
+        if let urlStr = self.playerManager.songInfoList?[currentSongInfoModelIndex].pic_small {
+            
+            self.currentMiniPlayerAlbumCoverView?.albumImageView.kf.setImage(with: URL(string: urlStr), placeholder: UIImage(named: "player_albumcover_minidefault"), options: nil, progressBlock: nil, completionHandler: nil)
+            
+        } else {
+            self.currentMiniPlayerAlbumCoverView?.albumImageView.image = UIImage(named: "player_albumcover_minidefault")
+        }
+        
+        if let urlStr = self.playerManager.songInfoList?[nextSongInfoModelIndex].pic_small {
+            
+            self.nextMiniPlayerAlbumCoverView?.albumImageView.kf.setImage(with: URL(string: urlStr), placeholder: UIImage(named: "player_albumcover_minidefault"), options: nil, progressBlock: nil, completionHandler: nil)
+            
+        } else {
+            self.nextMiniPlayerAlbumCoverView?.albumImageView.image = UIImage(named: "player_albumcover_minidefault")
         }
 
-        scrollView.contentOffset = CGPoint(x: self.scrollView.frame.width, y: 0)
-
     }
+
 }

@@ -36,6 +36,12 @@ class MBSongListViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.miniPlayerView = self.setupMiniPlayerView()
+    }
+    
     func setupNavigation() {
         self.navigationItem.title = "歌单"
         
@@ -61,12 +67,9 @@ class MBSongListViewController: UIViewController {
             
             self.navigationController?.popViewController(animated: false)
             
-            self.miniPlayerView?.isEnable = true
-            
         } else if sender == self.navigationItem.rightBarButtonItem?.customView {
             print("rightBarButtonItem")
             
-            self.miniPlayerView?.isEnable = false
         }
     }
     

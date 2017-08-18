@@ -13,9 +13,16 @@ extension UIViewController {
     func setupMiniPlayerView() -> MBMiniPlayerView {
         let miniPlayerView = MBMiniPlayerView.shared
         
-        self.view.addSubview(miniPlayerView)
+        if self.view.subviews.contains(miniPlayerView) == false {
+            self.view.addSubview(miniPlayerView)
+        }
+        
+        miniPlayerView.isEnable = miniPlayerView.playerManager.songInfoList != nil && miniPlayerView.playerManager.songInfoList!.count > 0
+        
+        if miniPlayerView.isEnable {
+            NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+        }
         
         return miniPlayerView
     }
-    
 }

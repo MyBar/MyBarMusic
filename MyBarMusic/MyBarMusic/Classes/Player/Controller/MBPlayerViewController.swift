@@ -47,16 +47,7 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let urlStr = self.playerManager.currentSongInfoModel?.pic_big {
-            
-            self.backgroudImageView?.kf.setImage(with: URL(string: urlStr), placeholder: UIImage(named: "player_albumblur_default"), options: [.transition(.fade(1))], progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
-                
-                self.playerAlbumCoverView.updateAlbumCoverView(with: image)
-            })
-            
-        } else {
-            self.backgroudImageView?.image = UIImage(named: "player_albumblur_default")
-        }
+        self.updateBlurEffectForBackgroudImage()
     }
     
     deinit {
@@ -74,7 +65,7 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
         self.backgroudImageView!.frame = self.view.bounds
         self.view.addSubview(self.backgroudImageView!)
         
-        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.dark))
+        let effectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.light))
         effectView.frame = self.backgroudImageView!.bounds
         self.backgroudImageView!.addSubview(effectView)
     }
@@ -222,16 +213,7 @@ extension MBPlayerViewController {
             print("MBPlayerViewController.playerManager.playerManagerStatus = loadSongModel")
             
             self.playerAlbumCoverView.updateAlbumCoverView(with: nil)
-            if let urlStr = self.playerManager.currentSongInfoModel?.pic_big {
-                
-                self.backgroudImageView?.kf.setImage(with: URL(string: urlStr), placeholder: UIImage(named: "player_albumblur_default"), options: [.transition(.fade(1))], progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
-                    
-                    self.playerAlbumCoverView.updateAlbumCoverView(with: image)
-                })
-                
-            } else {
-                self.backgroudImageView?.image = UIImage(named: "player_albumblur_default")
-            }
+            self.updateBlurEffectForBackgroudImage()
             
         case .unknown:
             print("MBPlayerViewController.playerManager.playerManagerStatus = unknown")
@@ -295,6 +277,29 @@ extension MBPlayerViewController {
         }
         
         self.playerControlPadView.refreshProgress()
+    }
+    
+    func updateBlurEffectForBackgroudImage() {
+        var effectView: UIVisualEffectView!
+        
+        for subview in self.backgroudImageView!.subviews {
+            if let view = (subview as? UIVisualEffectView) {
+                effectView = view
+                effectView.effect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            }
+        }
+        
+        if let urlStr = self.playerManager.currentSongInfoModel?.pic_big {
+            
+            self.backgroudImageView?.kf.setImage(with: URL(string: urlStr), placeholder: UIImage(named: "player_albumblur_default"), options: nil, progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
+                effectView.effect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+                self.playerAlbumCoverView.updateAlbumCoverView(with: image)
+            })
+            
+        } else {
+            effectView.effect = UIBlurEffect(style: UIBlurEffectStyle.light)
+            self.backgroudImageView?.image = UIImage(named: "player_albumblur_default")
+        }
     }
 
 }
