@@ -11,11 +11,9 @@ import UIKit
 class MBPlayerAlbumCoverView: UIView {
 
     @IBOutlet weak var singerLabel: UILabel!
-    @IBOutlet weak var albumCoverImageView: UIImageView!
+    @IBOutlet weak var albumCoverImageView: RotationAnimationImageView!
     @IBOutlet weak var lyricLabel: UILabel!
     @IBOutlet weak var playerEffectView: UIView!
-    
-    var isAddAnimation = false
     
     
     class var playerAlbumCoverView: MBPlayerAlbumCoverView {
@@ -63,26 +61,27 @@ class MBPlayerAlbumCoverView: UIView {
         self.albumCoverImageView.image = (with ?? UIImage(named: "player_albumcover_default"))?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
     }
     
+    var rotationAngle: CGFloat {
+        return self.albumCoverImageView.rotationAngle
+    }
+    
     //初始化动画
-    func initAnimationWithSpeed(_ speed: Float) {
-        self.albumCoverImageView.initAnimationWithSpeed(speed)
-        self.isAddAnimation = true
+    func initAnimation(with rotationAngle: CGFloat = 0.0) {
+        self.albumCoverImageView.initAnimation(with: rotationAngle)
     }
     
     //启动动画
-    func startAnimation() {
-        self.albumCoverImageView.startAnimation()
+    func resumeAnimation() {
+        self.albumCoverImageView.resumeAnimation()
     }
     
     //暂停动画
     func pauseAnimation() {
         self.albumCoverImageView.pauseAnimation()
     }
-    
-    //移除动画
-    func RemoveAnimation() {
-        self.albumCoverImageView.RemoveAnimation()
-        self.isAddAnimation = false
-    }
 
+    //移除动画
+    func removeAnimation() {
+        self.albumCoverImageView.removeAnimation()
+    }
 }

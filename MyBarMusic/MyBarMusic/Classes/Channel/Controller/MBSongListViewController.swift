@@ -146,7 +146,7 @@ extension MBSongListViewController: UITableViewDelegate {
         }
         
         
-        let playerViewController = MBPlayerViewController()
+        let playerViewController = MBPlayerViewController(albumCoverRotationAngle: self.miniPlayerView!.currentMiniPlayerAlbumCoverView!.rotationAngle)
         let navViewController = UINavigationController(rootViewController: playerViewController)
         let rootVC = UIApplication.shared.keyWindow?.rootViewController
         rootVC?.present(navViewController, animated: true, completion: nil)

@@ -19,10 +19,6 @@ extension UIViewController {
         
         miniPlayerView.isEnable = miniPlayerView.playerManager.songInfoList != nil && miniPlayerView.playerManager.songInfoList!.count > 0
         
-        if miniPlayerView.isEnable {
-            NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
-        }
-        
         return miniPlayerView
     }
 }

@@ -42,7 +42,6 @@ class MBPlayerManager: NSObject {
     }
     
     deinit {
-        print("===============MBPlayerManager deinit===================")
         self.removeObserverFromPlayer()
         self.removeObserverFromPlayerCurrentItem()
     }

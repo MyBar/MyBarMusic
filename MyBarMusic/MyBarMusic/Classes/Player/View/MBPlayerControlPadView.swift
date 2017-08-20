@@ -48,7 +48,6 @@ class MBPlayerControlPadView: UIView {
     }
     
     deinit {
-        print("===============playerControlPadView deinit===================")
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
         

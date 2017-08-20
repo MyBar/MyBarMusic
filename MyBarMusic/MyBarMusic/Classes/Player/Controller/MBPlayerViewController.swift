@@ -25,6 +25,19 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
     
     var isAddTimer = false
     
+    var albumCoverRotationAngle: CGFloat = 0.0
+    
+    init(albumCoverRotationAngle: CGFloat) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.albumCoverRotationAngle = albumCoverRotationAngle
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,26 +49,28 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
 
         self.setupPlayerControlPadView()
         
+        self.addTimer()
+        
         //监听状态变化
         NotificationCenter.default.addObserver(self, selector: #selector(self.observePlayerManagerStatus(_:)), name: NSNotification.Name("playerManagerStatus"), object: nil)
         
-        NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: self.albumCoverRotationAngle)
         
-        self.addTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.updateBlurEffectForBackgroudImage()
+        
     }
     
-    deinit {
-        print("===============MBPlayerViewController deinit===================")
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
         
-        self.playerAlbumCoverView.RemoveAnimation()
+        self.playerAlbumCoverView.removeAnimation()
         
         self.removeTimer()
     }
@@ -165,6 +180,11 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
             
             self.navigationController?.dismiss(animated: true, completion: nil)
             
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
+            
+            self.playerAlbumCoverView.pauseAnimation()
+            NotificationCenter.default.post(name: NSNotification.Name("playerManagerStatus"), object: self.playerAlbumCoverView.rotationAngle)
+            
         } else if sender == self.navigationItem.rightBarButtonItem?.customView {
             print("rightBarButtonItem")
         }
@@ -181,13 +201,14 @@ class MBPlayerViewController: UIViewController, UIScrollViewDelegate {
 extension MBPlayerViewController {
     
     func observePlayerManagerStatus(_ notification: Notification) {
+        
+        let rotationAngle = (notification.object as? CGFloat) ?? self.playerAlbumCoverView.rotationAngle
+        
         switch self.playerManager.playerManagerStatus {
         case .playing:
             print("MBPlayerViewController.playerManager.playerManagerStatus = playing")
-            if self.playerAlbumCoverView.isAddAnimation == false {
-                self.playerAlbumCoverView.initAnimationWithSpeed(0.1)
-            }
-            self.playerAlbumCoverView.startAnimation()
+            self.playerAlbumCoverView.initAnimation(with: rotationAngle)
+            self.playerAlbumCoverView.resumeAnimation()
             
             if self.isAddTimer == false {
                 self.addTimer()
@@ -195,6 +216,8 @@ extension MBPlayerViewController {
             
         case .paused:
             print("MBPlayerViewController.playerManager.playerManagerStatus = paused")
+            
+            self.playerAlbumCoverView.initAnimation(with: rotationAngle)
             self.playerAlbumCoverView.pauseAnimation()
             
             self.removeTimer()
@@ -202,9 +225,7 @@ extension MBPlayerViewController {
             
         case .stopped:
             print("MBPlayerViewController.playerManager.playerManagerStatus = stopped")
-            if self.playerAlbumCoverView.isAddAnimation {
-                self.playerAlbumCoverView.RemoveAnimation()
-            }
+            self.playerAlbumCoverView.removeAnimation()
             
             self.removeTimer()
             self.refreshUI()
@@ -220,12 +241,7 @@ extension MBPlayerViewController {
             
         case .readyToPlay:
             print("MBPlayerViewController.playerManager.playerManagerStatus = readyToPlay")
-            if self.playerAlbumCoverView.isAddAnimation {
-                self.playerAlbumCoverView.RemoveAnimation()
-            } else {
-                self.playerAlbumCoverView.initAnimationWithSpeed(0.1)
-                self.playerAlbumCoverView.pauseAnimation()
-            }
+            self.playerAlbumCoverView.initAnimation(with: rotationAngle)
             
             if self.isAddTimer == false {
                 self.addTimer()
@@ -280,6 +296,10 @@ extension MBPlayerViewController {
     }
     
     func updateBlurEffectForBackgroudImage() {
+        guard self.backgroudImageView != nil else {
+            return
+        }
+        
         var effectView: UIVisualEffectView!
         
         for subview in self.backgroudImageView!.subviews {

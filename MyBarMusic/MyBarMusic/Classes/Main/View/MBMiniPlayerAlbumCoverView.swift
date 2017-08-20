@@ -10,13 +10,11 @@ import UIKit
 
 class MBMiniPlayerAlbumCoverView: UIView {
 
-    @IBOutlet weak var albumImageView: UIImageView!
+    @IBOutlet weak var albumImageView: RotationAnimationImageView!
     
     @IBOutlet weak var musicNameLabel: UILabel!
 
     @IBOutlet weak var lyricLabel: UILabel!
-    
-    var isAddAnimation = false
     
     class var miniPlayerAlbumCoverView: MBMiniPlayerAlbumCoverView {
         
@@ -37,7 +35,7 @@ class MBMiniPlayerAlbumCoverView: UIView {
     func tapAlbumCoverViewGestureRecognizer(_ sender: UITapGestureRecognizer) {
         print("tapMiniPlayerViewGestureRecognizer")
         
-        let playerViewController = MBPlayerViewController()
+        let playerViewController = MBPlayerViewController(albumCoverRotationAngle: self.rotationAngle)
         
         let navViewController = UINavigationController(rootViewController: playerViewController)
         
@@ -47,15 +45,18 @@ class MBMiniPlayerAlbumCoverView: UIView {
         
     }
     
+    var rotationAngle: CGFloat {
+        return self.albumImageView.rotationAngle
+    }
+    
     //初始化动画
-    func initAnimationWithSpeed(_ speed: Float) {
-        self.albumImageView.initAnimationWithSpeed(speed)
-        self.isAddAnimation = true
+    func initAnimation(with rotationAngle: CGFloat = 0.0) {
+        self.albumImageView.initAnimation(with: rotationAngle)
     }
     
     //启动动画
-    func startAnimation() {
-        self.albumImageView.startAnimation()
+    func resumeAnimation() {
+        self.albumImageView.resumeAnimation()
     }
     
     //暂停动画
@@ -64,8 +65,7 @@ class MBMiniPlayerAlbumCoverView: UIView {
     }
     
     //移除动画
-    func RemoveAnimation() {
-        self.albumImageView.RemoveAnimation()
-        self.isAddAnimation = false
+    func removeAnimation() {
+        self.albumImageView.removeAnimation()
     }
 }

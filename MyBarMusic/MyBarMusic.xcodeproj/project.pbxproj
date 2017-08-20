@@ -23,10 +23,10 @@
 		8DB496BE1F1B6C9000169AF8 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB496BD1F1B6C9000169AF8 /* UIViewController+Extension.swift */; };
 		8DB7F92D1F1D8FDB00E74D3B /* MBNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7F92C1F1D8FDB00E74D3B /* MBNetworkManager.swift */; };
 		8DB7F9301F1DC4F800E74D3B /* MBPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7F92F1F1DC4F800E74D3B /* MBPlayerManager.swift */; };
-		8DBD3BE31F1A271A0073F6A0 /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD3BE21F1A271A0073F6A0 /* UIImageView+Animation.swift */; };
 		8DBD3BE61F1A2C070073F6A0 /* MBSongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD3BE51F1A2C070073F6A0 /* MBSongModel.swift */; };
 		8DBD3BE81F1A2EA30073F6A0 /* MBSongInfoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD3BE71F1A2EA30073F6A0 /* MBSongInfoListModel.swift */; };
 		8DBE524D1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBE524C1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift */; };
+		8DD402F01F4806D8005540A2 /* RotationAnimationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD402EF1F4806D8005540A2 /* RotationAnimationImageView.swift */; };
 		8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */; };
 		8DE6232C1F1CA50300CEE608 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE6232B1F1CA50300CEE608 /* AVFoundation.framework */; };
 		8DE88CBA1F1856F000684279 /* MBSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE88CB81F1856F000684279 /* MBSettingViewController.swift */; };
@@ -59,10 +59,10 @@
 		8DB496BD1F1B6C9000169AF8 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8DB7F92C1F1D8FDB00E74D3B /* MBNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNetworkManager.swift; sourceTree = "<group>"; };
 		8DB7F92F1F1DC4F800E74D3B /* MBPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerManager.swift; sourceTree = "<group>"; };
-		8DBD3BE21F1A271A0073F6A0 /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
 		8DBD3BE51F1A2C070073F6A0 /* MBSongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongModel.swift; sourceTree = "<group>"; };
 		8DBD3BE71F1A2EA30073F6A0 /* MBSongInfoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongInfoListModel.swift; sourceTree = "<group>"; };
 		8DBE524C1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNetworkReachabilityStatusListener.swift; sourceTree = "<group>"; };
+		8DD402EF1F4806D8005540A2 /* RotationAnimationImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationAnimationImageView.swift; sourceTree = "<group>"; };
 		8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerViewController.swift; sourceTree = "<group>"; };
 		8DE6232B1F1CA50300CEE608 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8DE88CB81F1856F000684279 /* MBSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSettingViewController.swift; sourceTree = "<group>"; };
@@ -233,6 +233,7 @@
 				8DB7F92E1F1DC4D500E74D3B /* PlayerManager */,
 				8DB7F92B1F1D8FC000E74D3B /* NetworkManager */,
 				8DBD3BE41F1A2AF60073F6A0 /* Model */,
+				8DD402ED1F480671005540A2 /* Inherit */,
 				8DBD3BE01F1A271A0073F6A0 /* Extension */,
 			);
 			path = Utility;
@@ -249,7 +250,6 @@
 		8DBD3BE11F1A271A0073F6A0 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
-				8DBD3BE21F1A271A0073F6A0 /* UIImageView+Animation.swift */,
 				8DB496BD1F1B6C9000169AF8 /* UIViewController+Extension.swift */,
 			);
 			path = GUI;
@@ -262,6 +262,22 @@
 				8DBD3BE71F1A2EA30073F6A0 /* MBSongInfoListModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8DD402ED1F480671005540A2 /* Inherit */ = {
+			isa = PBXGroup;
+			children = (
+				8DD402EE1F480671005540A2 /* GUI */,
+			);
+			path = Inherit;
+			sourceTree = "<group>";
+		};
+		8DD402EE1F480671005540A2 /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				8DD402EF1F4806D8005540A2 /* RotationAnimationImageView.swift */,
+			);
+			path = GUI;
 			sourceTree = "<group>";
 		};
 		8DDCED551F10E59C00C1657B /* Player */ = {
@@ -589,6 +605,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DD402F01F4806D8005540A2 /* RotationAnimationImageView.swift in Sources */,
 				8DBE524D1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift in Sources */,
 				8DB496BE1F1B6C9000169AF8 /* UIViewController+Extension.swift in Sources */,
 				8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */,
@@ -604,7 +621,6 @@
 				8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */,
 				8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */,
 				8DA516421F14993A002FD491 /* MBPlayerAlbumCoverView.swift in Sources */,
-				8DBD3BE31F1A271A0073F6A0 /* UIImageView+Animation.swift in Sources */,
 				8DB7F9301F1DC4F800E74D3B /* MBPlayerManager.swift in Sources */,
 				8DB7F92D1F1D8FDB00E74D3B /* MBNetworkManager.swift in Sources */,
 				8DBD3BE61F1A2C070073F6A0 /* MBSongModel.swift in Sources */,

@@ -57,11 +57,10 @@ class MBMiniPlayerView: UIView, UIScrollViewDelegate {
     }
     
     deinit {
-        print("===============miniPlayerView deinit===================")
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name("playerManagerStatus"), object: nil)
         
-        self.currentMiniPlayerAlbumCoverView?.RemoveAnimation()
+        self.currentMiniPlayerAlbumCoverView?.pauseAnimation()
         
     }
 
@@ -73,6 +72,7 @@ class MBMiniPlayerView: UIView, UIScrollViewDelegate {
             self.playlistButton.isEnabled = isEnable
             
             if isEnable == false {
+                self.currentMiniPlayerAlbumCoverView?.removeAnimation()
                 self.playerManager.endPlay()
             }
         }
@@ -184,27 +184,27 @@ class MBMiniPlayerView: UIView, UIScrollViewDelegate {
 extension MBMiniPlayerView {
     
     func observePlayerManagerStatus(_ notification: Notification) {
+        
+        let rotationAngle = (notification.object as? CGFloat) ?? self.currentMiniPlayerAlbumCoverView!.rotationAngle
+        
         switch self.playerManager.playerManagerStatus {
         case .playing:
             print("MBMiniPlayerView.playerManager.playerManagerStatus = playing")
             self.updatePlayOrPauseButton()
             
-            if self.currentMiniPlayerAlbumCoverView!.isAddAnimation == false {
-                self.currentMiniPlayerAlbumCoverView!.initAnimationWithSpeed(0.1)
-            }
-            self.currentMiniPlayerAlbumCoverView!.startAnimation()
+            self.currentMiniPlayerAlbumCoverView!.initAnimation(with: rotationAngle)
+            self.currentMiniPlayerAlbumCoverView!.resumeAnimation()
             
         case .paused:
             print("MBMiniPlayerView.playerManager.playerManagerStatus = paused")
             self.updatePlayOrPauseButton()
             
+            self.currentMiniPlayerAlbumCoverView!.initAnimation(with: rotationAngle)
             self.currentMiniPlayerAlbumCoverView!.pauseAnimation()
             
         case .stopped:
             print("MBMiniPlayerView.playerManager.playerManagerStatus = stopped")
-            if self.currentMiniPlayerAlbumCoverView!.isAddAnimation {
-                self.currentMiniPlayerAlbumCoverView!.RemoveAnimation()
-            }
+            self.currentMiniPlayerAlbumCoverView!.removeAnimation()
             
         case .loadSongModel:
             print("MBMiniPlayerView.playerManager.playerManagerStatus = loadSongModel")
@@ -215,12 +215,7 @@ extension MBMiniPlayerView {
             
         case .readyToPlay:
             print("MBMiniPlayerView.playerManager.playerManagerStatus = readyToPlay")
-            if self.currentMiniPlayerAlbumCoverView!.isAddAnimation {
-                self.currentMiniPlayerAlbumCoverView!.RemoveAnimation()
-            } else {
-                self.currentMiniPlayerAlbumCoverView!.initAnimationWithSpeed(0.1)
-                self.currentMiniPlayerAlbumCoverView!.pauseAnimation()
-            }
+            self.currentMiniPlayerAlbumCoverView!.initAnimation(with: rotationAngle)
             
         case .failed:
             print("MBMiniPlayerView.playerManager.playerManagerStatus = failed")
