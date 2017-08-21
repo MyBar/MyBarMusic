@@ -15,6 +15,8 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
     
     var scrollView: UIScrollView?
     
+    var searchBarView: MBSearchBarView?
+    
     var channelVC: MBChannelViewController?
     
     override func viewDidLoad() {
@@ -23,6 +25,8 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "vc_bg")!)
         
         self.setupNavigation()
+        
+        self.setupSearchBarView()
         
         self.setupScrollView()
         
@@ -42,8 +46,8 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         let navigationBarAndStatusBarHeight: CGFloat = self.navigationController!.navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
     
         var frame = self.view.bounds
-        frame.origin.y = 0
-        frame.size.height = frame.size.height - MBMiniPlayerView.shared.frame.height - navigationBarAndStatusBarHeight
+        frame.origin.y = searchBarViewHeight
+        frame.size.height = frame.size.height - MBMiniPlayerView.shared.frame.height - navigationBarAndStatusBarHeight - searchBarViewHeight
         
         self.scrollView = UIScrollView(frame: frame)
         self.scrollView!.bounces = false
@@ -89,6 +93,7 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
 
     func setupNavigation() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "vc_head_bg"), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         let leftBarButton = UIButton(type: UIButtonType.custom)
         leftBarButton.setBackgroundImage(UIImage(named: "top_tab_more")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), for: UIControlState.normal)
@@ -128,6 +133,25 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
         
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
+        
+    }
+    
+    func setupSearchBarView() {
+        
+        let searchBarViewSuperView = UIView()
+        var frame = self.view.bounds
+        frame.origin.y = 0
+        frame.size.height = searchBarViewHeight
+        searchBarViewSuperView.frame = frame
+        searchBarViewSuperView.backgroundColor = UIColor.clear
+        
+        self.searchBarView = MBSearchBarView.searchBarView
+        
+        self.searchBarView?.frame = searchBarViewSuperView.frame
+        
+        searchBarViewSuperView.addSubview(self.searchBarView!)
+        
+        self.view.addSubview(searchBarViewSuperView)
         
     }
     

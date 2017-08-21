@@ -26,6 +26,8 @@
 		8DBD3BE61F1A2C070073F6A0 /* MBSongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD3BE51F1A2C070073F6A0 /* MBSongModel.swift */; };
 		8DBD3BE81F1A2EA30073F6A0 /* MBSongInfoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD3BE71F1A2EA30073F6A0 /* MBSongInfoListModel.swift */; };
 		8DBE524D1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBE524C1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift */; };
+		8DCA53E51F4A7E290004A36F /* MBSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCA53E41F4A7E290004A36F /* MBSearchBarView.swift */; };
+		8DCA53E71F4A7E550004A36F /* MBSearchBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DCA53E61F4A7E550004A36F /* MBSearchBarView.xib */; };
 		8DD402F01F4806D8005540A2 /* RotationAnimationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD402EF1F4806D8005540A2 /* RotationAnimationImageView.swift */; };
 		8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */; };
 		8DE6232C1F1CA50300CEE608 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE6232B1F1CA50300CEE608 /* AVFoundation.framework */; };
@@ -62,6 +64,8 @@
 		8DBD3BE51F1A2C070073F6A0 /* MBSongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongModel.swift; sourceTree = "<group>"; };
 		8DBD3BE71F1A2EA30073F6A0 /* MBSongInfoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongInfoListModel.swift; sourceTree = "<group>"; };
 		8DBE524C1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNetworkReachabilityStatusListener.swift; sourceTree = "<group>"; };
+		8DCA53E41F4A7E290004A36F /* MBSearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSearchBarView.swift; sourceTree = "<group>"; };
+		8DCA53E61F4A7E550004A36F /* MBSearchBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBSearchBarView.xib; sourceTree = "<group>"; };
 		8DD402EF1F4806D8005540A2 /* RotationAnimationImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationAnimationImageView.swift; sourceTree = "<group>"; };
 		8DDCED591F10E6BD00C1657B /* MBPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerViewController.swift; sourceTree = "<group>"; };
 		8DE6232B1F1CA50300CEE608 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -428,6 +432,8 @@
 				8DA7F4911F0E2B9600DBEE8C /* MBMiniPlayerView.xib */,
 				8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */,
 				8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */,
+				8DCA53E41F4A7E290004A36F /* MBSearchBarView.swift */,
+				8DCA53E61F4A7E550004A36F /* MBSearchBarView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */,
+				8DCA53E71F4A7E550004A36F /* MBSearchBarView.xib in Resources */,
 				8DE8BD911F0CD3420035EE87 /* MBNavigationItemTitleView.xib in Resources */,
 				8DB496BC1F1B0A8B00169AF8 /* MBSongListViewController.xib in Resources */,
 				8DA516441F14994C002FD491 /* MBPlayerAlbumCoverView.xib in Resources */,
@@ -606,6 +613,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD402F01F4806D8005540A2 /* RotationAnimationImageView.swift in Sources */,
+				8DCA53E51F4A7E290004A36F /* MBSearchBarView.swift in Sources */,
 				8DBE524D1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift in Sources */,
 				8DB496BE1F1B6C9000169AF8 /* UIViewController+Extension.swift in Sources */,
 				8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */,
