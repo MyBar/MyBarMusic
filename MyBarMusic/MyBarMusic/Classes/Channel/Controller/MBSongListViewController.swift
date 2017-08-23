@@ -67,6 +67,8 @@ class MBSongListViewController: UIViewController {
             
             self.navigationController?.popViewController(animated: false)
             
+            MBNetworkManager.cancelFetchTask()
+            
         } else if sender == self.navigationItem.rightBarButtonItem?.customView {
             print("rightBarButtonItem")
             

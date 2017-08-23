@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		070D7E6EAA4563D242651AC9 /* Pods_MyBarMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C93FE038ED7BFE209364C5 /* Pods_MyBarMusic.framework */; };
+		8D23C6341F4BEAFF009C6C84 /* MBSearchSongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23C6331F4BEAFF009C6C84 /* MBSearchSongModel.swift */; };
+		8D23C6361F4BEF86009C6C84 /* MBLRCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23C6351F4BEF86009C6C84 /* MBLRCModel.swift */; };
+		8D23C6381F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23C6371F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift */; };
+		8D23C63A1F4BFC59009C6C84 /* MBSingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23C6391F4BFC59009C6C84 /* MBSingerModel.swift */; };
 		8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */; };
 		8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */; };
 		8DA516421F14993A002FD491 /* MBPlayerAlbumCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */; };
@@ -46,6 +50,10 @@
 
 /* Begin PBXFileReference section */
 		1C8D9CD5285A72B7EBE80A1B /* Pods-MyBarMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyBarMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyBarMusic/Pods-MyBarMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		8D23C6331F4BEAFF009C6C84 /* MBSearchSongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSearchSongModel.swift; sourceTree = "<group>"; };
+		8D23C6351F4BEF86009C6C84 /* MBLRCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBLRCModel.swift; sourceTree = "<group>"; };
+		8D23C6371F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBRecommandSongInfoListModel.swift; sourceTree = "<group>"; };
+		8D23C6391F4BFC59009C6C84 /* MBSingerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSingerModel.swift; sourceTree = "<group>"; };
 		8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerControlPadView.swift; sourceTree = "<group>"; };
 		8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBPlayerControlPadView.xib; sourceTree = "<group>"; };
 		8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerAlbumCoverView.swift; sourceTree = "<group>"; };
@@ -263,7 +271,11 @@
 			isa = PBXGroup;
 			children = (
 				8DBD3BE51F1A2C070073F6A0 /* MBSongModel.swift */,
+				8D23C6331F4BEAFF009C6C84 /* MBSearchSongModel.swift */,
 				8DBD3BE71F1A2EA30073F6A0 /* MBSongInfoListModel.swift */,
+				8D23C6351F4BEF86009C6C84 /* MBLRCModel.swift */,
+				8D23C6371F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift */,
+				8D23C6391F4BFC59009C6C84 /* MBSingerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -617,6 +629,7 @@
 				8DBE524D1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift in Sources */,
 				8DB496BE1F1B6C9000169AF8 /* UIViewController+Extension.swift in Sources */,
 				8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */,
+				8D23C6381F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift in Sources */,
 				8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */,
 				8DE88CBA1F1856F000684279 /* MBSettingViewController.swift in Sources */,
 				8DE88CBD1F18618600684279 /* MBSlideMenuController.swift in Sources */,
@@ -624,6 +637,7 @@
 				8DBD3BE81F1A2EA30073F6A0 /* MBSongInfoListModel.swift in Sources */,
 				8DE8BD8F1F0CD3060035EE87 /* MBNavigationItemTitleView.swift in Sources */,
 				8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */,
+				8D23C6361F4BEF86009C6C84 /* MBLRCModel.swift in Sources */,
 				8DE8BD8D1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift in Sources */,
 				8DE88CC41F18B14D00684279 /* MBSwitchTableViewCell.swift in Sources */,
 				8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */,
@@ -633,6 +647,8 @@
 				8DB7F92D1F1D8FDB00E74D3B /* MBNetworkManager.swift in Sources */,
 				8DBD3BE61F1A2C070073F6A0 /* MBSongModel.swift in Sources */,
 				8DB496B91F1B0A8B00169AF8 /* MBChannelViewController.swift in Sources */,
+				8D23C6341F4BEAFF009C6C84 /* MBSearchSongModel.swift in Sources */,
+				8D23C63A1F4BFC59009C6C84 /* MBSingerModel.swift in Sources */,
 				8DB496BB1F1B0A8B00169AF8 /* MBSongListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

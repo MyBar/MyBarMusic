@@ -103,4 +103,11 @@ struct MBSongInfoListModel: HandyJSON {
     var song_list: [MBSongInfoModel]?
     
     var billboard: MBBillboardInfoModel?
+    
+    //以下的是获取歌手歌曲列表字段
+    var songlist: [MBSongInfoModel]?
+    
+    var songnums: String?
+    
+    var havemore: Int?
 }
