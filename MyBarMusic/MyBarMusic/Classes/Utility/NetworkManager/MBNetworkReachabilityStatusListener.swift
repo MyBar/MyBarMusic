@@ -36,6 +36,8 @@ class MBNetworkReachabilityStatusListener {
                 print("The network is reachable over the WWAN connection")
                 
             }
+            
+            NotificationCenter.default.post(name: NSNotification.Name("NetworkReachabilityStatus"), object: nil)
         }
         networkReachabilityManager?.startListening()
     }

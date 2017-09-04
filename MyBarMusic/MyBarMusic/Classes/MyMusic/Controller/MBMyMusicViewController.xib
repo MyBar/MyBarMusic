@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MBMyMusicViewController" customModule="MyBarMusic" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="TrW-O9-IQf" id="KmB-jQ-35d"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="warningBannerView" destination="Xln-Xj-nah" id="9Td-dX-toY"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xln-Xj-nah">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bannerTips_waring" translatesAutoresizingMaskIntoConstraints="NO" id="xmD-oY-VW9">
+                            <rect key="frame" x="12" y="8" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="9oO-F3-GiR"/>
+                                <constraint firstAttribute="height" constant="24" id="ed1-ic-1OU"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="似乎没有网络噢，请检查网络设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5C-60-jpc">
+                            <rect key="frame" x="44" y="11" width="295" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brB-fy-gir">
+                            <rect key="frame" x="347" y="12" width="16" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="HCG-er-wC3"/>
+                                <constraint firstAttribute="width" constant="16" id="LJc-4r-LpI"/>
+                            </constraints>
+                            <state key="normal" image="nonetbanner_close_white" backgroundImage="nonetbanner_close_white"/>
+                            <connections>
+                                <action selector="clickCloseButtonOfWarningBannerView:" destination="-1" eventType="touchUpInside" id="vQ9-0y-C9D"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.91764705882352937" green="0.792156862745098" blue="0.68627450980392157" alpha="0.80243288590604023" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="A5C-60-jpc" firstAttribute="centerY" secondItem="Xln-Xj-nah" secondAttribute="centerY" id="D78-vs-46I"/>
+                        <constraint firstItem="brB-fy-gir" firstAttribute="leading" secondItem="A5C-60-jpc" secondAttribute="trailing" constant="8" id="FXd-9j-eHS"/>
+                        <constraint firstItem="A5C-60-jpc" firstAttribute="leading" secondItem="xmD-oY-VW9" secondAttribute="trailing" constant="8" id="L2a-cD-ohm"/>
+                        <constraint firstAttribute="height" constant="40" id="VDE-Wc-Vlf"/>
+                        <constraint firstItem="brB-fy-gir" firstAttribute="centerY" secondItem="Xln-Xj-nah" secondAttribute="centerY" id="Z15-pc-3uG"/>
+                        <constraint firstAttribute="trailing" secondItem="brB-fy-gir" secondAttribute="trailing" constant="12" id="Z9Z-lw-7Aa"/>
+                        <constraint firstItem="xmD-oY-VW9" firstAttribute="leading" secondItem="Xln-Xj-nah" secondAttribute="leading" constant="12" id="d7t-83-qWY"/>
+                        <constraint firstItem="xmD-oY-VW9" firstAttribute="centerY" secondItem="Xln-Xj-nah" secondAttribute="centerY" id="gRM-Su-mDx"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TrW-O9-IQf">
+                    <rect key="frame" x="0.0" y="40" width="375" height="627"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Xln-Xj-nah" secondAttribute="trailing" id="16b-uW-FZN"/>
+                <constraint firstItem="TrW-O9-IQf" firstAttribute="top" secondItem="Xln-Xj-nah" secondAttribute="bottom" id="4vD-OX-blK"/>
+                <constraint firstItem="TrW-O9-IQf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="E89-sO-Pbd"/>
+                <constraint firstAttribute="trailing" secondItem="TrW-O9-IQf" secondAttribute="trailing" id="Lzi-El-XVX"/>
+                <constraint firstItem="Xln-Xj-nah" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nDi-KB-nLz"/>
+                <constraint firstItem="Xln-Xj-nah" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ptf-81-v96"/>
+                <constraint firstAttribute="bottom" secondItem="TrW-O9-IQf" secondAttribute="bottom" id="tue-5e-FxG"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bannerTips_waring" width="15" height="15"/>
+        <image name="nonetbanner_close_white" width="14" height="14"/>
+    </resources>
+</document>

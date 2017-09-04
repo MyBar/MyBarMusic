@@ -12,23 +12,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MBSearchBarView" customModule="MyBarMusic" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vc_head_bg" translatesAutoresizingMaskIntoConstraints="NO" id="DyL-oj-P8Q">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFV-Sz-YN7">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
                     <subviews>
                         <searchBar userInteractionEnabled="NO" contentMode="redraw" text="" placeholder="搜索" translatesAutoresizingMaskIntoConstraints="NO" id="dRy-OE-ri7">
-                            <rect key="frame" x="0.0" y="-8" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="-6" width="375" height="44"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="dRy-OE-ri7" secondAttribute="bottom" constant="-4" id="3xE-bv-QKE"/>
-                        <constraint firstItem="dRy-OE-ri7" firstAttribute="top" secondItem="rFV-Sz-YN7" secondAttribute="top" constant="-8" id="E7s-Oc-Ttt"/>
+                        <constraint firstAttribute="bottom" secondItem="dRy-OE-ri7" secondAttribute="bottom" constant="-2" id="3xE-bv-QKE"/>
+                        <constraint firstItem="dRy-OE-ri7" firstAttribute="top" secondItem="rFV-Sz-YN7" secondAttribute="top" constant="-6" id="E7s-Oc-Ttt"/>
                         <constraint firstAttribute="trailing" secondItem="dRy-OE-ri7" secondAttribute="trailing" id="jCT-dv-7Hm"/>
                         <constraint firstItem="dRy-OE-ri7" firstAttribute="leading" secondItem="rFV-Sz-YN7" secondAttribute="leading" id="pHC-N5-A4g"/>
                     </constraints>

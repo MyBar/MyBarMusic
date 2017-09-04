@@ -17,6 +17,8 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
     
     var searchBarView: MBSearchBarView?
     
+    var mymusicVC: MBMyMusicViewController?
+    
     var channelVC: MBChannelViewController?
     
     override func viewDidLoad() {
@@ -64,10 +66,10 @@ class MBMainViewController: UIViewController, UIScrollViewDelegate {
             
             switch index {
                 case 0:
-                    let imageView = UIImageView(frame: CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height))
-                    imageView.image = UIImage(named: "Welcome_3.0_\(index + 1)")
-                        
-                    self.scrollView?.addSubview(imageView)
+                    self.mymusicVC = MBMyMusicViewController()
+                    self.mymusicVC!.view.frame = CGRect(x: CGFloat(index) * width, y: 0, width: width, height: height)
+                    
+                    self.scrollView?.addSubview(self.mymusicVC!.view)
                 
                 case 1:
                     self.channelVC = MBChannelViewController()

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MBSongListTableViewCell" id="3vy-2t-VU3" customClass="MBSongListTableViewCell" customModule="MyBarMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3vy-2t-VU3" id="qkg-AG-vAZ">
+                <rect key="frame" x="0.0" y="0.0" width="287" height="63.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vc_head_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1if-d9-8OB">
+                        <rect key="frame" x="0.0" y="1" width="62" height="62"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="1if-d9-8OB" secondAttribute="height" multiplier="1:1" id="xJb-VI-WEX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新建歌单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Dp-AM-6t7">
+                        <rect key="frame" x="70" y="21" width="217" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="FdL-Yr-nO1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EY9-3C-bf3">
+                        <rect key="frame" x="70" y="13" width="217" height="37"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个性电台" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6X-uE-3tc">
+                                <rect key="frame" x="0.0" y="0.0" width="217" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="sQx-xb-57F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="好音乐因你而存在" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzr-Yl-4h6">
+                                <rect key="frame" x="18" y="21" width="199" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_auto_down_opened_finished" translatesAutoresizingMaskIntoConstraints="NO" id="JMH-uJ-sKN">
+                                <rect key="frame" x="0.0" y="24" width="10" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="JMH-uJ-sKN" secondAttribute="height" multiplier="1:1" id="aAg-XU-xeC"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d6X-uE-3tc" firstAttribute="leading" secondItem="EY9-3C-bf3" secondAttribute="leading" id="1rf-2p-rOQ"/>
+                            <constraint firstItem="JMH-uJ-sKN" firstAttribute="top" secondItem="d6X-uE-3tc" secondAttribute="bottom" constant="3" id="5VA-gu-30y"/>
+                            <constraint firstItem="tzr-Yl-4h6" firstAttribute="top" secondItem="d6X-uE-3tc" secondAttribute="bottom" id="DJk-8Q-2fq"/>
+                            <constraint firstItem="JMH-uJ-sKN" firstAttribute="leading" secondItem="EY9-3C-bf3" secondAttribute="leading" id="Dh5-7q-PCS"/>
+                            <constraint firstItem="JMH-uJ-sKN" firstAttribute="leading" secondItem="EY9-3C-bf3" secondAttribute="leading" id="GAH-zW-5ct"/>
+                            <constraint firstItem="tzr-Yl-4h6" firstAttribute="leading" secondItem="JMH-uJ-sKN" secondAttribute="trailing" constant="8" id="Q2Z-5D-yoZ"/>
+                            <constraint firstItem="tzr-Yl-4h6" firstAttribute="top" secondItem="d6X-uE-3tc" secondAttribute="bottom" id="T0O-5l-1d9"/>
+                            <constraint firstAttribute="trailing" secondItem="d6X-uE-3tc" secondAttribute="trailing" id="YH9-UV-iM2"/>
+                            <constraint firstItem="d6X-uE-3tc" firstAttribute="top" secondItem="EY9-3C-bf3" secondAttribute="top" id="YuW-IE-0Aq"/>
+                            <constraint firstAttribute="bottom" secondItem="tzr-Yl-4h6" secondAttribute="bottom" id="ZGI-7S-zoc"/>
+                            <constraint firstAttribute="trailing" secondItem="tzr-Yl-4h6" secondAttribute="trailing" id="wmT-px-Por"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="EY9-3C-bf3" secondAttribute="trailing" id="0dz-3Q-puU"/>
+                    <constraint firstItem="1if-d9-8OB" firstAttribute="top" secondItem="qkg-AG-vAZ" secondAttribute="top" constant="1" id="4w7-VK-mrh"/>
+                    <constraint firstItem="1if-d9-8OB" firstAttribute="leading" secondItem="qkg-AG-vAZ" secondAttribute="leading" id="DUn-bM-qdP"/>
+                    <constraint firstItem="7Dp-AM-6t7" firstAttribute="leading" secondItem="1if-d9-8OB" secondAttribute="trailing" constant="8" id="His-5g-IUq"/>
+                    <constraint firstAttribute="bottom" secondItem="1if-d9-8OB" secondAttribute="bottom" constant="1" id="Itb-wg-36v"/>
+                    <constraint firstItem="7Dp-AM-6t7" firstAttribute="centerY" secondItem="qkg-AG-vAZ" secondAttribute="centerY" id="TWp-62-CiF"/>
+                    <constraint firstAttribute="trailing" secondItem="7Dp-AM-6t7" secondAttribute="trailing" id="YRc-UG-TVQ"/>
+                    <constraint firstItem="EY9-3C-bf3" firstAttribute="top" secondItem="qkg-AG-vAZ" secondAttribute="topMargin" constant="5" id="eji-WZ-Zgn"/>
+                    <constraint firstItem="EY9-3C-bf3" firstAttribute="leading" secondItem="1if-d9-8OB" secondAttribute="trailing" constant="8" id="iRC-OK-bcQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addNewSongListLabel" destination="7Dp-AM-6t7" id="zB8-xC-KJU"/>
+                <outlet property="albumImageView" destination="1if-d9-8OB" id="YLN-di-bfc"/>
+                <outlet property="downloadImageView" destination="JMH-uJ-sKN" id="z8f-s0-4By"/>
+                <outlet property="songListContainerView" destination="EY9-3C-bf3" id="fgW-mU-XMF"/>
+                <outlet property="songListNameLabel" destination="d6X-uE-3tc" id="zJx-HR-Q7k"/>
+                <outlet property="songNumLabel" destination="tzr-Yl-4h6" id="xeG-uv-bPx"/>
+            </connections>
+            <point key="canvasLocation" x="20" y="-59"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cell_auto_down_opened_finished" width="10" height="10"/>
+        <image name="vc_head_bg" width="375" height="64"/>
+    </resources>
+</document>

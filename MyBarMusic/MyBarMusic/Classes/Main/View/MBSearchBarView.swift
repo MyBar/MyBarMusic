@@ -8,7 +8,7 @@
 
 import UIKit
 
-var searchBarViewHeight: CGFloat = 32
+var searchBarViewHeight: CGFloat = 36
 
 class MBSearchBarView: UIView {
 

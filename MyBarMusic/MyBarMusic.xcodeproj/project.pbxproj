@@ -12,6 +12,14 @@
 		8D23C6361F4BEF86009C6C84 /* MBLRCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23C6351F4BEF86009C6C84 /* MBLRCModel.swift */; };
 		8D23C6381F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23C6371F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift */; };
 		8D23C63A1F4BFC59009C6C84 /* MBSingerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D23C6391F4BFC59009C6C84 /* MBSingerModel.swift */; };
+		8D62D2241F57A9620026FA1D /* MBRadioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D62D2221F57A9620026FA1D /* MBRadioTableViewCell.swift */; };
+		8D62D2251F57A9620026FA1D /* MBRadioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D62D2231F57A9620026FA1D /* MBRadioTableViewCell.xib */; };
+		8D9124511F559A7E00845939 /* MBMyMusicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D91244F1F559A7E00845939 /* MBMyMusicTableViewCell.swift */; };
+		8D9124521F559A7E00845939 /* MBMyMusicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9124501F559A7E00845939 /* MBMyMusicTableViewCell.xib */; };
+		8D97278E1F5CD1200058371E /* MBSongListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D97278C1F5CD1200058371E /* MBSongListTableViewCell.swift */; };
+		8D97278F1F5CD1200058371E /* MBSongListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D97278D1F5CD1200058371E /* MBSongListTableViewCell.xib */; };
+		8D9B34761F5C35EB00B969EF /* MBSongListManageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9B34741F5C35EB00B969EF /* MBSongListManageTableViewCell.swift */; };
+		8D9B34771F5C35EB00B969EF /* MBSongListManageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9B34751F5C35EB00B969EF /* MBSongListManageTableViewCell.xib */; };
 		8DA1AA011F12337500AEB370 /* MBPlayerControlPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */; };
 		8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */; };
 		8DA516421F14993A002FD491 /* MBPlayerAlbumCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */; };
@@ -20,6 +28,8 @@
 		8DA7F4921F0E2B9600DBEE8C /* MBMiniPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7F4911F0E2B9600DBEE8C /* MBMiniPlayerView.xib */; };
 		8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */; };
 		8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */; };
+		8DA98B7B1F4E417E00616293 /* MBMyMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA98B791F4E417E00616293 /* MBMyMusicViewController.swift */; };
+		8DA98B7C1F4E417E00616293 /* MBMyMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DA98B7A1F4E417E00616293 /* MBMyMusicViewController.xib */; };
 		8DB496B91F1B0A8B00169AF8 /* MBChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB496B51F1B0A8B00169AF8 /* MBChannelViewController.swift */; };
 		8DB496BA1F1B0A8B00169AF8 /* MBChannelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB496B61F1B0A8B00169AF8 /* MBChannelViewController.xib */; };
 		8DB496BB1F1B0A8B00169AF8 /* MBSongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB496B71F1B0A8B00169AF8 /* MBSongListViewController.swift */; };
@@ -27,6 +37,8 @@
 		8DB496BE1F1B6C9000169AF8 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB496BD1F1B6C9000169AF8 /* UIViewController+Extension.swift */; };
 		8DB7F92D1F1D8FDB00E74D3B /* MBNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7F92C1F1D8FDB00E74D3B /* MBNetworkManager.swift */; };
 		8DB7F9301F1DC4F800E74D3B /* MBPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB7F92F1F1DC4F800E74D3B /* MBPlayerManager.swift */; };
+		8DB995091F544242000A0358 /* MBLoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB995071F544242000A0358 /* MBLoginTableViewCell.swift */; };
+		8DB9950A1F544242000A0358 /* MBLoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB995081F544242000A0358 /* MBLoginTableViewCell.xib */; };
 		8DBD3BE61F1A2C070073F6A0 /* MBSongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD3BE51F1A2C070073F6A0 /* MBSongModel.swift */; };
 		8DBD3BE81F1A2EA30073F6A0 /* MBSongInfoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBD3BE71F1A2EA30073F6A0 /* MBSongInfoListModel.swift */; };
 		8DBE524D1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBE524C1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift */; };
@@ -54,6 +66,14 @@
 		8D23C6351F4BEF86009C6C84 /* MBLRCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBLRCModel.swift; sourceTree = "<group>"; };
 		8D23C6371F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBRecommandSongInfoListModel.swift; sourceTree = "<group>"; };
 		8D23C6391F4BFC59009C6C84 /* MBSingerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSingerModel.swift; sourceTree = "<group>"; };
+		8D62D2221F57A9620026FA1D /* MBRadioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBRadioTableViewCell.swift; sourceTree = "<group>"; };
+		8D62D2231F57A9620026FA1D /* MBRadioTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBRadioTableViewCell.xib; sourceTree = "<group>"; };
+		8D91244F1F559A7E00845939 /* MBMyMusicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMyMusicTableViewCell.swift; sourceTree = "<group>"; };
+		8D9124501F559A7E00845939 /* MBMyMusicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMyMusicTableViewCell.xib; sourceTree = "<group>"; };
+		8D97278C1F5CD1200058371E /* MBSongListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongListTableViewCell.swift; sourceTree = "<group>"; };
+		8D97278D1F5CD1200058371E /* MBSongListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBSongListTableViewCell.xib; sourceTree = "<group>"; };
+		8D9B34741F5C35EB00B969EF /* MBSongListManageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongListManageTableViewCell.swift; sourceTree = "<group>"; };
+		8D9B34751F5C35EB00B969EF /* MBSongListManageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBSongListManageTableViewCell.xib; sourceTree = "<group>"; };
 		8DA1A9FF1F12337500AEB370 /* MBPlayerControlPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerControlPadView.swift; sourceTree = "<group>"; };
 		8DA1AA001F12337500AEB370 /* MBPlayerControlPadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBPlayerControlPadView.xib; sourceTree = "<group>"; };
 		8DA516411F14993A002FD491 /* MBPlayerAlbumCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerAlbumCoverView.swift; sourceTree = "<group>"; };
@@ -62,6 +82,8 @@
 		8DA7F4911F0E2B9600DBEE8C /* MBMiniPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMiniPlayerView.xib; sourceTree = "<group>"; };
 		8DA7F4931F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMiniPlayerAlbumCoverView.swift; sourceTree = "<group>"; };
 		8DA7F4951F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMiniPlayerAlbumCoverView.xib; sourceTree = "<group>"; };
+		8DA98B791F4E417E00616293 /* MBMyMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBMyMusicViewController.swift; sourceTree = "<group>"; };
+		8DA98B7A1F4E417E00616293 /* MBMyMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMyMusicViewController.xib; sourceTree = "<group>"; };
 		8DB496B51F1B0A8B00169AF8 /* MBChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBChannelViewController.swift; sourceTree = "<group>"; };
 		8DB496B61F1B0A8B00169AF8 /* MBChannelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBChannelViewController.xib; sourceTree = "<group>"; };
 		8DB496B71F1B0A8B00169AF8 /* MBSongListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongListViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +91,8 @@
 		8DB496BD1F1B6C9000169AF8 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8DB7F92C1F1D8FDB00E74D3B /* MBNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNetworkManager.swift; sourceTree = "<group>"; };
 		8DB7F92F1F1DC4F800E74D3B /* MBPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPlayerManager.swift; sourceTree = "<group>"; };
+		8DB995071F544242000A0358 /* MBLoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBLoginTableViewCell.swift; sourceTree = "<group>"; };
+		8DB995081F544242000A0358 /* MBLoginTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBLoginTableViewCell.xib; sourceTree = "<group>"; };
 		8DBD3BE51F1A2C070073F6A0 /* MBSongModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongModel.swift; sourceTree = "<group>"; };
 		8DBD3BE71F1A2EA30073F6A0 /* MBSongInfoListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBSongInfoListModel.swift; sourceTree = "<group>"; };
 		8DBE524C1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBNetworkReachabilityStatusListener.swift; sourceTree = "<group>"; };
@@ -204,6 +228,8 @@
 		8DA618A61F0F730B005C6BC4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8DA98B791F4E417E00616293 /* MBMyMusicViewController.swift */,
+				8DA98B7A1F4E417E00616293 /* MBMyMusicViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -218,6 +244,16 @@
 		8DA618A81F0F730B005C6BC4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8DB995071F544242000A0358 /* MBLoginTableViewCell.swift */,
+				8DB995081F544242000A0358 /* MBLoginTableViewCell.xib */,
+				8D91244F1F559A7E00845939 /* MBMyMusicTableViewCell.swift */,
+				8D9124501F559A7E00845939 /* MBMyMusicTableViewCell.xib */,
+				8D62D2221F57A9620026FA1D /* MBRadioTableViewCell.swift */,
+				8D62D2231F57A9620026FA1D /* MBRadioTableViewCell.xib */,
+				8D9B34741F5C35EB00B969EF /* MBSongListManageTableViewCell.swift */,
+				8D9B34751F5C35EB00B969EF /* MBSongListManageTableViewCell.xib */,
+				8D97278C1F5CD1200058371E /* MBSongListTableViewCell.swift */,
+				8D97278D1F5CD1200058371E /* MBSongListTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -555,17 +591,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9B34771F5C35EB00B969EF /* MBSongListManageTableViewCell.xib in Resources */,
 				8DE8BD741F0C94510035EE87 /* Assets.xcassets in Resources */,
+				8D62D2251F57A9620026FA1D /* MBRadioTableViewCell.xib in Resources */,
 				8DCA53E71F4A7E550004A36F /* MBSearchBarView.xib in Resources */,
 				8DE8BD911F0CD3420035EE87 /* MBNavigationItemTitleView.xib in Resources */,
+				8D97278F1F5CD1200058371E /* MBSongListTableViewCell.xib in Resources */,
 				8DB496BC1F1B0A8B00169AF8 /* MBSongListViewController.xib in Resources */,
+				8D9124521F559A7E00845939 /* MBMyMusicTableViewCell.xib in Resources */,
 				8DA516441F14994C002FD491 /* MBPlayerAlbumCoverView.xib in Resources */,
+				8DA98B7C1F4E417E00616293 /* MBMyMusicViewController.xib in Resources */,
 				8DB496BA1F1B0A8B00169AF8 /* MBChannelViewController.xib in Resources */,
 				8DA1AA021F12337500AEB370 /* MBPlayerControlPadView.xib in Resources */,
 				8DE88CBB1F1856F000684279 /* MBSettingViewController.xib in Resources */,
 				8DA7F4921F0E2B9600DBEE8C /* MBMiniPlayerView.xib in Resources */,
 				8DE88CC51F18B14D00684279 /* MBSwitchTableViewCell.xib in Resources */,
 				8DA7F4961F0E453600DBEE8C /* MBMiniPlayerAlbumCoverView.xib in Resources */,
+				8DB9950A1F544242000A0358 /* MBLoginTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,10 +669,13 @@
 				8DD402F01F4806D8005540A2 /* RotationAnimationImageView.swift in Sources */,
 				8DCA53E51F4A7E290004A36F /* MBSearchBarView.swift in Sources */,
 				8DBE524D1F36E07C007AF3CB /* MBNetworkReachabilityStatusListener.swift in Sources */,
+				8D9B34761F5C35EB00B969EF /* MBSongListManageTableViewCell.swift in Sources */,
 				8DB496BE1F1B6C9000169AF8 /* UIViewController+Extension.swift in Sources */,
+				8DB995091F544242000A0358 /* MBLoginTableViewCell.swift in Sources */,
 				8DA7F4941F0E452200DBEE8C /* MBMiniPlayerAlbumCoverView.swift in Sources */,
 				8D23C6381F4BFA19009C6C84 /* MBRecommandSongInfoListModel.swift in Sources */,
 				8DE8BD8A1F0C98520035EE87 /* MBMainViewController.swift in Sources */,
+				8D62D2241F57A9620026FA1D /* MBRadioTableViewCell.swift in Sources */,
 				8DE88CBA1F1856F000684279 /* MBSettingViewController.swift in Sources */,
 				8DE88CBD1F18618600684279 /* MBSlideMenuController.swift in Sources */,
 				8DA7F4901F0E2B8100DBEE8C /* MBMiniPlayerView.swift in Sources */,
@@ -640,14 +685,17 @@
 				8D23C6361F4BEF86009C6C84 /* MBLRCModel.swift in Sources */,
 				8DE8BD8D1F0C9A4B0035EE87 /* MBNewFeatureViewController.swift in Sources */,
 				8DE88CC41F18B14D00684279 /* MBSwitchTableViewCell.swift in Sources */,
+				8DA98B7B1F4E417E00616293 /* MBMyMusicViewController.swift in Sources */,
 				8DE8BD6D1F0C94510035EE87 /* AppDelegate.swift in Sources */,
 				8DDCED5A1F10E6BD00C1657B /* MBPlayerViewController.swift in Sources */,
 				8DA516421F14993A002FD491 /* MBPlayerAlbumCoverView.swift in Sources */,
 				8DB7F9301F1DC4F800E74D3B /* MBPlayerManager.swift in Sources */,
 				8DB7F92D1F1D8FDB00E74D3B /* MBNetworkManager.swift in Sources */,
 				8DBD3BE61F1A2C070073F6A0 /* MBSongModel.swift in Sources */,
+				8D9124511F559A7E00845939 /* MBMyMusicTableViewCell.swift in Sources */,
 				8DB496B91F1B0A8B00169AF8 /* MBChannelViewController.swift in Sources */,
 				8D23C6341F4BEAFF009C6C84 /* MBSearchSongModel.swift in Sources */,
+				8D97278E1F5CD1200058371E /* MBSongListTableViewCell.swift in Sources */,
 				8D23C63A1F4BFC59009C6C84 /* MBSingerModel.swift in Sources */,
 				8DB496BB1F1B0A8B00169AF8 /* MBSongListViewController.swift in Sources */,
 			);

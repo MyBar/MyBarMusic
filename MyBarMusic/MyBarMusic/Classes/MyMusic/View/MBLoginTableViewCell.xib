@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MBLoginTableViewCell" rowHeight="90" id="KGk-i7-Jjw" customClass="MBLoginTableViewCell" customModule="MyBarMusic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R62-94-MDN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登陆听歌，加速QQ等级" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJe-eu-FRY">
+                                <rect key="frame" x="0.0" y="24" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvR-EU-DVK">
+                                <rect key="frame" x="88" y="61" width="144" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="xR8-7e-xVk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="立即登陆" backgroundImage="mymusic_login_btn">
+                                    <color key="titleColor" red="0.19215686274509802" green="0.76078431372549016" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="UJe-eu-FRY" firstAttribute="leading" secondItem="R62-94-MDN" secondAttribute="leading" id="Kfi-qn-BhO"/>
+                            <constraint firstItem="vvR-EU-DVK" firstAttribute="top" secondItem="UJe-eu-FRY" secondAttribute="bottom" constant="16" id="Npl-Qk-tZF"/>
+                            <constraint firstItem="vvR-EU-DVK" firstAttribute="centerX" secondItem="R62-94-MDN" secondAttribute="centerX" id="SNL-1U-O3M"/>
+                            <constraint firstAttribute="bottom" secondItem="vvR-EU-DVK" secondAttribute="bottom" constant="8" id="ZYa-Zr-ruc"/>
+                            <constraint firstItem="UJe-eu-FRY" firstAttribute="top" secondItem="R62-94-MDN" secondAttribute="top" constant="24" id="hiN-OQ-gHa"/>
+                            <constraint firstItem="UJe-eu-FRY" firstAttribute="centerX" secondItem="R62-94-MDN" secondAttribute="centerX" id="klj-V8-JJc"/>
+                            <constraint firstAttribute="trailing" secondItem="UJe-eu-FRY" secondAttribute="trailing" id="lRn-QT-guO"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ggM-CG-Drf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vc_head_bg" translatesAutoresizingMaskIntoConstraints="NO" id="t9J-LK-B6b">
+                                <rect key="frame" x="132" y="8" width="56" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="MGo-IL-Sw1"/>
+                                    <constraint firstAttribute="width" secondItem="t9J-LK-B6b" secondAttribute="height" multiplier="1:1" id="Nyv-a0-Vf5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Q0-Ej-LVM">
+                                <rect key="frame" x="0.0" y="64" width="320" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble_level_diamon" translatesAutoresizingMaskIntoConstraints="NO" id="kZ2-p7-5CN">
+                                <rect key="frame" x="147.5" y="92" width="25" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="4TT-aM-L3b"/>
+                                    <constraint firstAttribute="width" secondItem="kZ2-p7-5CN" secondAttribute="height" multiplier="5:4" id="tGc-Fi-Yd3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Q0-Ej-LVM" firstAttribute="top" secondItem="t9J-LK-B6b" secondAttribute="bottom" id="284-F7-joF"/>
+                            <constraint firstItem="4Q0-Ej-LVM" firstAttribute="centerX" secondItem="ggM-CG-Drf" secondAttribute="centerX" id="9Tr-6B-juN"/>
+                            <constraint firstAttribute="bottom" secondItem="kZ2-p7-5CN" secondAttribute="bottom" id="Cjn-uj-v3H"/>
+                            <constraint firstItem="t9J-LK-B6b" firstAttribute="centerX" secondItem="ggM-CG-Drf" secondAttribute="centerX" id="E2d-na-6VA"/>
+                            <constraint firstItem="4Q0-Ej-LVM" firstAttribute="leading" secondItem="ggM-CG-Drf" secondAttribute="leading" id="FfD-If-nSq"/>
+                            <constraint firstItem="kZ2-p7-5CN" firstAttribute="centerX" secondItem="ggM-CG-Drf" secondAttribute="centerX" id="Fgh-1k-2dF"/>
+                            <constraint firstItem="t9J-LK-B6b" firstAttribute="top" secondItem="ggM-CG-Drf" secondAttribute="top" constant="8" id="T1d-tr-hTB"/>
+                            <constraint firstAttribute="trailing" secondItem="4Q0-Ej-LVM" secondAttribute="trailing" id="q6k-Qz-pIn"/>
+                            <constraint firstItem="kZ2-p7-5CN" firstAttribute="top" secondItem="4Q0-Ej-LVM" secondAttribute="bottom" id="s4R-zZ-8pf"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ggM-CG-Drf" secondAttribute="bottom" id="0De-bq-GYl"/>
+                    <constraint firstItem="ggM-CG-Drf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ImE-63-75b"/>
+                    <constraint firstAttribute="bottom" secondItem="R62-94-MDN" secondAttribute="bottom" id="Rwr-n0-2ny"/>
+                    <constraint firstItem="ggM-CG-Drf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ui1-Mf-qK7"/>
+                    <constraint firstAttribute="trailing" secondItem="ggM-CG-Drf" secondAttribute="trailing" id="X2W-Ol-Xcc"/>
+                    <constraint firstItem="R62-94-MDN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hgf-H9-Fib"/>
+                    <constraint firstAttribute="trailing" secondItem="R62-94-MDN" secondAttribute="trailing" id="ka6-nQ-YaT"/>
+                    <constraint firstItem="R62-94-MDN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rlh-3E-U6j"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="loginButton" destination="vvR-EU-DVK" id="aeG-gx-OwW"/>
+                <outlet property="loginView" destination="R62-94-MDN" id="HL2-IX-C77"/>
+                <outlet property="userCoverImageView" destination="t9J-LK-B6b" id="Hop-cs-6Yb"/>
+                <outlet property="userInfoView" destination="ggM-CG-Drf" id="wIS-mX-Gw7"/>
+                <outlet property="userLevelImageView" destination="kZ2-p7-5CN" id="epk-iZ-czU"/>
+                <outlet property="usernameLabel" destination="4Q0-Ej-LVM" id="Mp6-WP-TPu"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="38"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bubble_level_diamon" width="15" height="12"/>
+        <image name="mymusic_login_btn" width="154" height="62"/>
+        <image name="vc_head_bg" width="375" height="64"/>
+    </resources>
+</document>
